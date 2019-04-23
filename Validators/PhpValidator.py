@@ -10,16 +10,19 @@ class PhpValidator:
     url = '127.0.0.1:8000'
     process = None
 
-    def init(self):
-        url = raw_input('Please provide php validator url(http://127.0.0.1:8000):')
-        self.folders = raw_input('Please insert php folders, comma separated:')
-        self.url = url if len(url) > 0 else self.url
+    def __init__(self):
         self.process = subprocess.Popen(
             ['php -S ' + self.url + ' -t ../PHP_WORLD/'],
             shell=True,
             stdout=open(os.devnull, 'wb'),
             stderr=open(os.devnull, 'wb'),
         )
+
+    def init(self):
+        url = raw_input('Please provide php validator url(http://127.0.0.1:8000):')
+        self.folders = raw_input('Please insert php folders, comma separated:')
+        self.url = url if len(url) > 0 else self.url
+
 
     def execute(self):
         if self.folders is not '' and self.url is not '':
