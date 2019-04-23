@@ -1,0 +1,3293 @@
+Following tags don't have proper translation: 
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Address.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/AsyncInventoryReversalService.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Coupon/Mappers/Coupon.php: 
+	17	$selectQuery = new SelectQuery('SELECT * FROM coupons');
+	18	$selectQuery->whereEquals('couponid', $this->getCouponId());
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Coupon.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Currency/RoundingStrategy.php: 
+	21	"only rounds to number of decimal places greater than or equal to zero passed: $numberOfDecimalPlaces"
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Discount/CartDiscountDistributorAdapter.php: 
+	44	$products[$lineItemId]->setOrderDiscount('manual-discount', $amount->asFloat());
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Download.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/DownloadLinkGenerator.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Event.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Events/EventType.php: 
+	16	const FRAUD = 'fraud';
+	17	const GENERAL = 'general';
+	18	const ORDER = 'order';
+	19	const PAYMENT = 'payment';
+	20	const TAX = 'tax';
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Events/Factory.php: 
+	16	const FRAUD = 'fraud';
+	17	const GENERAL = 'general';
+	18	const ORDER = 'order';
+	19	const PAYMENT = 'payment';
+	20	const TAX = 'tax';
+	27	$amount = $data['amount'] ?? 0;
+	28	$currency = $data['currency'] ?? '';
+	32	$status = $data['status'] ?? '';
+	45	return new TaxQuoteEvent($data['taxProviderDisplayName'], $data['taxTotal']);
+	47	return new TaxDocumentSubmissionEvent($data['taxProviderDisplayName'], $data['operationName']);
+	61	case 'pending':
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Events/Fraud/GenericResult.php: 
+	60	'code' => $this->getCode(),
+	61	'status' => $this->getStatus(),
+	62	'message' => $this->getMessage(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Events/Payments/EventType.php: 
+	173	'amount' => $this->getAmount(),
+	174	'currency' => $this->getCurrency(),
+	178	'status' => $this->getStatus(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/GiftCertificate/GiftCertificateHistoryFactory.php: 
+	32	$dateCreated = $this->dateTimeFactory->makeFromTimestamp((int)$historyArray['historddate']);
+	35	(int) $historyArray['historderid'],
+	36	(int) $historyArray['histgiftcertid'],
+	37	(int) $historyArray['histcustomerid'],
+	38	(float) $historyArray['histbalanceused'],
+	39	(float) $historyArray['histbalanceremaining'],
+	42	(int) $historyArray['historyid'] ?? null
+	65	$historyArray['id'] ?? null
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/BillingAddress.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/Coupons.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/Currency.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/Customers.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/Messages.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/OrderMapper.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/OrderProducts.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+	14	'digital',
+	15	'physical',
+	16	'giftcertificate',
+	53	$typesIn = 'op.ordprodtype IN(';
+	54	$typesIn .= '"' . implode('", "', $this->productTypes) . '"';
+	55	$typesIn .= ')';
+	64	WHERE ' . $typesIn . ' AND op.orderorderid IN(' . implode(', ', $ids) . ')
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/PaymentActions.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+	14	'digital',
+	15	'physical',
+	16	'giftcertificate',
+	53	$typesIn = 'op.ordprodtype IN(';
+	54	$typesIn .= '"' . implode('", "', $this->productTypes) . '"';
+	55	$typesIn .= ')';
+	64	WHERE ' . $typesIn . ' AND op.orderorderid IN(' . implode(', ', $ids) . ')
+	45	$externalProviderId = $order->getExtraInfoValue('providerMethod');
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/PaymentDetails.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+	14	'digital',
+	15	'physical',
+	16	'giftcertificate',
+	53	$typesIn = 'op.ordprodtype IN(';
+	54	$typesIn .= '"' . implode('", "', $this->productTypes) . '"';
+	55	$typesIn .= ')';
+	64	WHERE ' . $typesIn . ' AND op.orderorderid IN(' . implode(', ', $ids) . ')
+	45	$externalProviderId = $order->getExtraInfoValue('providerMethod');
+	14	Language::load('admin/common');
+	15	Language::load('admin/customers');
+	27	$chunk['orderid'] = $o->getId();
+	41	$chunk['orddiscountamount'] = $o->get('orddiscountamount');
+	43	$chunk['ordisdigital'] = $o->get('ordisdigital');
+	54	$chunk['ordstorecreditamount'] = $o->get('ordstorecreditamount');
+	56	$chunk['ordgiftcertificateamount'] = $o->get('ordgiftcertificateamount');
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/ShipmentItemCountMapper.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+	14	'digital',
+	15	'physical',
+	16	'giftcertificate',
+	53	$typesIn = 'op.ordprodtype IN(';
+	54	$typesIn .= '"' . implode('", "', $this->productTypes) . '"';
+	55	$typesIn .= ')';
+	64	WHERE ' . $typesIn . ' AND op.orderorderid IN(' . implode(', ', $ids) . ')
+	45	$externalProviderId = $order->getExtraInfoValue('providerMethod');
+	14	Language::load('admin/common');
+	15	Language::load('admin/customers');
+	27	$chunk['orderid'] = $o->getId();
+	41	$chunk['orddiscountamount'] = $o->get('orddiscountamount');
+	43	$chunk['ordisdigital'] = $o->get('ordisdigital');
+	54	$chunk['ordstorecreditamount'] = $o->get('ordstorecreditamount');
+	56	$chunk['ordgiftcertificateamount'] = $o->get('ordgiftcertificateamount');
+	28	shipid IN (" . implode(',', $ids) . ")
+	35	$data[$row['shipid']] = (int)$row['itemcount'];
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/ShipmentMapper.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+	14	'digital',
+	15	'physical',
+	16	'giftcertificate',
+	53	$typesIn = 'op.ordprodtype IN(';
+	54	$typesIn .= '"' . implode('", "', $this->productTypes) . '"';
+	55	$typesIn .= ')';
+	64	WHERE ' . $typesIn . ' AND op.orderorderid IN(' . implode(', ', $ids) . ')
+	45	$externalProviderId = $order->getExtraInfoValue('providerMethod');
+	14	Language::load('admin/common');
+	15	Language::load('admin/customers');
+	27	$chunk['orderid'] = $o->getId();
+	41	$chunk['orddiscountamount'] = $o->get('orddiscountamount');
+	43	$chunk['ordisdigital'] = $o->get('ordisdigital');
+	54	$chunk['ordstorecreditamount'] = $o->get('ordstorecreditamount');
+	56	$chunk['ordgiftcertificateamount'] = $o->get('ordgiftcertificateamount');
+	28	shipid IN (" . implode(',', $ids) . ")
+	35	$data[$row['shipid']] = (int)$row['itemcount'];
+	14	'shipweight'        => 'weight',
+	17	'shipproviderpackaging' => 'packaging',
+	19	'shipmentid'        => 'id',
+	21	'shipdate'          => 'date',
+	24	'shipmethod'        => 'method',
+	27	'shipcomments'      => 'comments',
+	143	$prefix = '/^' . $prefix . '/';
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Mappers/ShippingAddresses.php: 
+	29	$companyCountry = $this->settings->get('CompanyCountry');
+	16	$selectQuery->whereIn('ordcouporderid', $this->getObjectIds());
+	15	$ids = implode(',', $objectIds);
+	20	$currencies = \Bigcommerce\Currency\Currency::find('currencyid IN(SELECT DISTINCT currencyid FROM orders WHERE orderid IN(' . $ids . '))');
+	18	$ids = implode(',', $objectIds);
+	54	$data[$o->getId()] = $collectedData[$o->get('ordcustid')];
+	33	$collectedData[$message->getMessageOrderId()]['outgoing'][] = $message;
+	35	if ($message->getMessageStatus() == 'read') {
+	36	$collectedData[$message->getMessageOrderId()]['incoming']['read'][] = $message;
+	38	$collectedData[$message->getMessageOrderId()]['incoming']['unread'][] = $message;
+	50	$flag = strtolower($o->get('ordgeoipcountrycode'));
+	14	'digital',
+	15	'physical',
+	16	'giftcertificate',
+	53	$typesIn = 'op.ordprodtype IN(';
+	54	$typesIn .= '"' . implode('", "', $this->productTypes) . '"';
+	55	$typesIn .= ')';
+	64	WHERE ' . $typesIn . ' AND op.orderorderid IN(' . implode(', ', $ids) . ')
+	45	$externalProviderId = $order->getExtraInfoValue('providerMethod');
+	14	Language::load('admin/common');
+	15	Language::load('admin/customers');
+	27	$chunk['orderid'] = $o->getId();
+	41	$chunk['orddiscountamount'] = $o->get('orddiscountamount');
+	43	$chunk['ordisdigital'] = $o->get('ordisdigital');
+	54	$chunk['ordstorecreditamount'] = $o->get('ordstorecreditamount');
+	56	$chunk['ordgiftcertificateamount'] = $o->get('ordgiftcertificateamount');
+	28	shipid IN (" . implode(',', $ids) . ")
+	35	$data[$row['shipid']] = (int)$row['itemcount'];
+	14	'shipweight'        => 'weight',
+	17	'shipproviderpackaging' => 'packaging',
+	19	'shipmentid'        => 'id',
+	21	'shipdate'          => 'date',
+	24	'shipmethod'        => 'method',
+	27	'shipcomments'      => 'comments',
+	143	$prefix = '/^' . $prefix . '/';
+	58	$address->module = $row['module'];
+	67	$address->id = $row['id'];
+	68	$address->company = $row['company'];
+	71	$address->state = $row['state'];
+	73	$address->city = $row['city'];
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Message.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Order.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/OrderNumberService.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/OrderStatus.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/OrderStatuses/CustomLabel.php: 
+	8	* This value object is "always valid" (as the validation occurs in the constructor).
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/OrderStatuses/CustomStatus.php: 
+	8	* This value object is "always valid" (as the validation occurs in the constructor).
+	66	return $this->systemStatus->getLabel() . ':' . $this->customLabel . ':' . $this->sortOrder;
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/OrderStatuses/CustomStatusService.php: 
+	8	* This value object is "always valid" (as the validation occurs in the constructor).
+	66	return $this->systemStatus->getLabel() . ':' . $this->customLabel . ':' . $this->sortOrder;
+	89	'id' => $status->value(),
+	90	'customLabelBefore' => $oldLabel,
+	91	'customLabelAfter'  => $newLabel,
+	96	$eventData['userId'] = $user->getId();
+	97	$eventData['userUid'] = $user->getUid();
+	98	$eventData['userEmail'] = $user->getUserEmail();
+	99	$eventData['userRole'] = $user->getUserRole();
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/OrderStatuses/MysqlStatusRepository.php: 
+	8	* This value object is "always valid" (as the validation occurs in the constructor).
+	66	return $this->systemStatus->getLabel() . ':' . $this->customLabel . ':' . $this->sortOrder;
+	89	'id' => $status->value(),
+	90	'customLabelBefore' => $oldLabel,
+	91	'customLabelAfter'  => $newLabel,
+	96	$eventData['userId'] = $user->getId();
+	97	$eventData['userUid'] = $user->getUid();
+	98	$eventData['userEmail'] = $user->getUserEmail();
+	99	$eventData['userRole'] = $user->getUserRole();
+	35	['statusid' => $status->value()],
+	51	$result = $select->whereEquals('statusid', $status->value())->first();
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/PaymentMethod.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/PaymentStatus.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Product/Mappers/ConfigurableFields.php: 
+	42	ordprodid IN(" . implode(', ', $ids) . ")";
+	47	$collectedData[$row['ordprodid']][] = $this->mapToApiFields($row, $mappedFields);
+	63	$configurableField = new ConfigurableField($row['orderfieldid'], $row['fieldid'], $row['orderid'], $row['ordprodid'], $row['productid']);
+	64	$configurableField->setName($row['name']);
+	65	$configurableField->setFieldType($row['fieldtype']);
+	66	$configurableField->setFieldName($row['fieldname']);
+	67	$configurableField->setFileName($row['filename']);
+	68	$configurableField->setFileType($row['filetype']);
+	69	$configurableField->setOriginalFileName($row['originalfilename']);
+	71	$configurableField->setValue($row['value']);
+	85	$fields['value'] = $fields['textcontents'];
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Product/Mappers/Options.php: 
+	42	ordprodid IN(" . implode(', ', $ids) . ")";
+	47	$collectedData[$row['ordprodid']][] = $this->mapToApiFields($row, $mappedFields);
+	63	$configurableField = new ConfigurableField($row['orderfieldid'], $row['fieldid'], $row['orderid'], $row['ordprodid'], $row['productid']);
+	64	$configurableField->setName($row['name']);
+	65	$configurableField->setFieldType($row['fieldtype']);
+	66	$configurableField->setFieldName($row['fieldname']);
+	67	$configurableField->setFileName($row['filename']);
+	68	$configurableField->setFileType($row['filetype']);
+	69	$configurableField->setOriginalFileName($row['originalfilename']);
+	71	$configurableField->setValue($row['value']);
+	85	$fields['value'] = $fields['textcontents'];
+	33	'id' => $orderProductAttribute->getId(),
+	38	'value' => $orderProductAttribute->getValidatedValue(),
+	39	'type' => '',
+	40	'name' => '',
+	58	$option['type'] = $attribute->getType()->getFriendlyTypeName();
+	59	$option['name'] = $attribute->getName();
+	62	$option['sku'] = $product['sku'];
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/ProductDownloadHash.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+	27	throw new \InvalidArgumentException('Invalid Download Hash');
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Query/CustomerSpendQuery.php: 
+	62	orders.ordrefundedamount) as "TOTAL SPEND"
+	67	$statement->where("ordstatus", "NOT IN", [1, 4, 5, 6, 7, 12, 13]);
+	70	$statement->where("ordcustid", "=", $customerId);
+	72	$statement->where("orddate", ">=", $startDate->getTimestamp());
+	75	$statement->where("orddate", "<=", $endDate->getTimestamp());
+	81	$value = (float)$result['TOTAL SPEND'];
+	96	return implode("-", [self::class, $customerId, $startDate, $endDate]);
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/ReturnOrder.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+	27	throw new \InvalidArgumentException('Invalid Download Hash');
+	24	"returnid" => null,
+	25	"retorderid" => null,
+	26	"retcustomerid" => null,
+	27	"retprodid" => null,
+	28	"retprodname" => null,
+	29	"retprodcost" => null,
+	30	"retprodqty" => null,
+	31	"retstatus" => null,
+	32	"retreason" => null,
+	33	"retaction" => null,
+	34	"retdaterequested" => null,
+	35	"retcomment" => null,
+	36	"retuserid" => null,
+	37	"retreceivedcredit" => null,
+	38	"retordprodid" => null,
+	39	"retstaffnotes" => null,
+	42	"retprodvariationid" => null,
+	43	"retprodoptions" => null,
+	75	return self::find('retorderid = ' . (int)($orderId));
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Shipment.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+	27	throw new \InvalidArgumentException('Invalid Download Hash');
+	24	"returnid" => null,
+	25	"retorderid" => null,
+	26	"retcustomerid" => null,
+	27	"retprodid" => null,
+	28	"retprodname" => null,
+	29	"retprodcost" => null,
+	30	"retprodqty" => null,
+	31	"retstatus" => null,
+	32	"retreason" => null,
+	33	"retaction" => null,
+	34	"retdaterequested" => null,
+	35	"retcomment" => null,
+	36	"retuserid" => null,
+	37	"retreceivedcredit" => null,
+	38	"retordprodid" => null,
+	39	"retstaffnotes" => null,
+	42	"retprodvariationid" => null,
+	43	"retprodoptions" => null,
+	75	return self::find('retorderid = ' . (int)($orderId));
+	14	'shipmentid' => null,
+	15	'shipcustid' => null,
+	16	'shipdate' => null,
+	17	'shiptrackno' => null,
+	18	'shiplabelprinted' => null,
+	26	'shipproviderpackaging' => null,
+	27	'shipproviderdeliveryservice' => null,
+	28	'shipproviderreference' => null,
+	29	'shipmethod' => null,
+	30	'shiporderid' => null,
+	31	'shiporderdate' => null,
+	32	'shipcomments' => null,
+	33	'shipweight' => null,
+	34	'width' => null,
+	35	'height' => null,
+	36	'length' => null,
+	37	'shipbillfirstname' => null,
+	38	'shipbilllastname' => null,
+	39	'shipbillcompany' => null,
+	40	'shipbillstreet1' => null,
+	41	'shipbillstreet2' => null,
+	42	'shipbillsuburb' => null,
+	43	'shipbillstate' => null,
+	44	'shipbillzip' => null,
+	45	'shipbillcountry' => null,
+	46	'shipbillcountrycode' => null,
+	47	'shipbillcountryid' => null,
+	48	'shipbillstateid' => null,
+	49	'shipbillphone' => null,
+	50	'shipbillemail' => null,
+	51	'shipshipfirstname' => null,
+	52	'shipshiplastname' => null,
+	53	'shipshipcompany' => null,
+	54	'shipshipstreet1' => null,
+	55	'shipshipstreet2' => null,
+	56	'shipshipsuburb' => null,
+	57	'shipshipstate' => null,
+	58	'shipshipzip' => null,
+	59	'shipshipcountry' => null,
+	60	'shipshipcountrycode' => null,
+	61	'shipshipcountryid' => null,
+	62	'shipshipstateid' => null,
+	63	'shipshipphone' => null,
+	64	'shipshipemail' => null,
+	117	return $this->get('shipweight');
+	122	return $this->get('width');
+	127	return $this->get('height');
+	132	return $this->get('length');
+	138	'width' => $this->getWidth(),
+	139	'height' => $this->getHeight(),
+	140	'length' => $this->getLength(),
+	293	'quantity' => (int) $shipmentItem->getItemQty(),
+	331	return $this->getShipCountryCode() === 'US' && stripos($this->getShipState(), 'Armed Forces') !== false;
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/ShipmentItem.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+	27	throw new \InvalidArgumentException('Invalid Download Hash');
+	24	"returnid" => null,
+	25	"retorderid" => null,
+	26	"retcustomerid" => null,
+	27	"retprodid" => null,
+	28	"retprodname" => null,
+	29	"retprodcost" => null,
+	30	"retprodqty" => null,
+	31	"retstatus" => null,
+	32	"retreason" => null,
+	33	"retaction" => null,
+	34	"retdaterequested" => null,
+	35	"retcomment" => null,
+	36	"retuserid" => null,
+	37	"retreceivedcredit" => null,
+	38	"retordprodid" => null,
+	39	"retstaffnotes" => null,
+	42	"retprodvariationid" => null,
+	43	"retprodoptions" => null,
+	75	return self::find('retorderid = ' . (int)($orderId));
+	14	'shipmentid' => null,
+	15	'shipcustid' => null,
+	16	'shipdate' => null,
+	17	'shiptrackno' => null,
+	18	'shiplabelprinted' => null,
+	26	'shipproviderpackaging' => null,
+	27	'shipproviderdeliveryservice' => null,
+	28	'shipproviderreference' => null,
+	29	'shipmethod' => null,
+	30	'shiporderid' => null,
+	31	'shiporderdate' => null,
+	32	'shipcomments' => null,
+	33	'shipweight' => null,
+	34	'width' => null,
+	35	'height' => null,
+	36	'length' => null,
+	37	'shipbillfirstname' => null,
+	38	'shipbilllastname' => null,
+	39	'shipbillcompany' => null,
+	40	'shipbillstreet1' => null,
+	41	'shipbillstreet2' => null,
+	42	'shipbillsuburb' => null,
+	43	'shipbillstate' => null,
+	44	'shipbillzip' => null,
+	45	'shipbillcountry' => null,
+	46	'shipbillcountrycode' => null,
+	47	'shipbillcountryid' => null,
+	48	'shipbillstateid' => null,
+	49	'shipbillphone' => null,
+	50	'shipbillemail' => null,
+	51	'shipshipfirstname' => null,
+	52	'shipshiplastname' => null,
+	53	'shipshipcompany' => null,
+	54	'shipshipstreet1' => null,
+	55	'shipshipstreet2' => null,
+	56	'shipshipsuburb' => null,
+	57	'shipshipstate' => null,
+	58	'shipshipzip' => null,
+	59	'shipshipcountry' => null,
+	60	'shipshipcountrycode' => null,
+	61	'shipshipcountryid' => null,
+	62	'shipshipstateid' => null,
+	63	'shipshipphone' => null,
+	64	'shipshipemail' => null,
+	117	return $this->get('shipweight');
+	122	return $this->get('width');
+	127	return $this->get('height');
+	132	return $this->get('length');
+	138	'width' => $this->getWidth(),
+	139	'height' => $this->getHeight(),
+	140	'length' => $this->getLength(),
+	293	'quantity' => (int) $shipmentItem->getItemQty(),
+	331	return $this->getShipCountryCode() === 'US' && stripos($this->getShipState(), 'Armed Forces') !== false;
+	12	'itemid' => null,
+	13	'itemordprodid' => null,
+	14	'itemprodeventdate' => null,
+	15	'itemprodeventname' => null,
+	16	'itemprodid' => null,
+	17	'itemprodname' => null,
+	18	'itemprodoptions' => null,
+	19	'itemprodsku' => null,
+	20	'itemprodvariationid' => null,
+	21	'itemqty' => null,
+	22	'ordprodbin' => null,
+	25	'shipid' => null,
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Shipping.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+	27	throw new \InvalidArgumentException('Invalid Download Hash');
+	24	"returnid" => null,
+	25	"retorderid" => null,
+	26	"retcustomerid" => null,
+	27	"retprodid" => null,
+	28	"retprodname" => null,
+	29	"retprodcost" => null,
+	30	"retprodqty" => null,
+	31	"retstatus" => null,
+	32	"retreason" => null,
+	33	"retaction" => null,
+	34	"retdaterequested" => null,
+	35	"retcomment" => null,
+	36	"retuserid" => null,
+	37	"retreceivedcredit" => null,
+	38	"retordprodid" => null,
+	39	"retstaffnotes" => null,
+	42	"retprodvariationid" => null,
+	43	"retprodoptions" => null,
+	75	return self::find('retorderid = ' . (int)($orderId));
+	14	'shipmentid' => null,
+	15	'shipcustid' => null,
+	16	'shipdate' => null,
+	17	'shiptrackno' => null,
+	18	'shiplabelprinted' => null,
+	26	'shipproviderpackaging' => null,
+	27	'shipproviderdeliveryservice' => null,
+	28	'shipproviderreference' => null,
+	29	'shipmethod' => null,
+	30	'shiporderid' => null,
+	31	'shiporderdate' => null,
+	32	'shipcomments' => null,
+	33	'shipweight' => null,
+	34	'width' => null,
+	35	'height' => null,
+	36	'length' => null,
+	37	'shipbillfirstname' => null,
+	38	'shipbilllastname' => null,
+	39	'shipbillcompany' => null,
+	40	'shipbillstreet1' => null,
+	41	'shipbillstreet2' => null,
+	42	'shipbillsuburb' => null,
+	43	'shipbillstate' => null,
+	44	'shipbillzip' => null,
+	45	'shipbillcountry' => null,
+	46	'shipbillcountrycode' => null,
+	47	'shipbillcountryid' => null,
+	48	'shipbillstateid' => null,
+	49	'shipbillphone' => null,
+	50	'shipbillemail' => null,
+	51	'shipshipfirstname' => null,
+	52	'shipshiplastname' => null,
+	53	'shipshipcompany' => null,
+	54	'shipshipstreet1' => null,
+	55	'shipshipstreet2' => null,
+	56	'shipshipsuburb' => null,
+	57	'shipshipstate' => null,
+	58	'shipshipzip' => null,
+	59	'shipshipcountry' => null,
+	60	'shipshipcountrycode' => null,
+	61	'shipshipcountryid' => null,
+	62	'shipshipstateid' => null,
+	63	'shipshipphone' => null,
+	64	'shipshipemail' => null,
+	117	return $this->get('shipweight');
+	122	return $this->get('width');
+	127	return $this->get('height');
+	132	return $this->get('length');
+	138	'width' => $this->getWidth(),
+	139	'height' => $this->getHeight(),
+	140	'length' => $this->getLength(),
+	293	'quantity' => (int) $shipmentItem->getItemQty(),
+	331	return $this->getShipCountryCode() === 'US' && stripos($this->getShipState(), 'Armed Forces') !== false;
+	12	'itemid' => null,
+	13	'itemordprodid' => null,
+	14	'itemprodeventdate' => null,
+	15	'itemprodeventname' => null,
+	16	'itemprodid' => null,
+	17	'itemprodname' => null,
+	18	'itemprodoptions' => null,
+	19	'itemprodsku' => null,
+	20	'itemprodvariationid' => null,
+	21	'itemqty' => null,
+	22	'ordprodbin' => null,
+	25	'shipid' => null,
+	36	'id' => null,
+	42	'tax' => null,
+	43	'discounts' => null,
+	44	'method' => null,
+	45	'module' => null,
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Tax.php: 
+	31	'id' => null,
+	35	'company' => null,
+	38	'city' => null,
+	39	'zip' => null,
+	40	'country' => null,
+	43	'state' => null,
+	45	'email' => null,
+	46	'phone' => null,
+	371	'shipzip' => $this->getZip(),
+	372	'shipcountryid' => $this->getCountryId(),
+	373	'shipstateid' => $this->getStateId(),
+	438	FROM " . \Store\Geography\Functions::getCountriesTable() . "
+	439	WHERE countryname='".$db->Quote($countryName)."'";
+	443	return $row['countryid'];
+	540	$addressIds[] = $addressId['id'];
+	549	'id' => $this->getId(),
+	120	return $this->storeSettings->get('AsyncInventoryUpdateInitialTtl') ?: self::$defaultInitialTtl;
+	128	return $this->storeSettings->get('AsyncInventoryUpdateExtendedTtl') ?: self::$defaultExtendedTtl;
+	159	'ttl' => $ttl,
+	170	$this->logger->warning("Failed to create payment inventory reversal", $newEntry->toArray());
+	206	$this->logger->warning('Unable to finalise async inventory update - invalid order id was supplied');
+	214	'orderId' => $orderId
+	220	'Payment response was received for order but async inventory tracking record was not found',
+	227	$logContext['paymentModule'] = $record->getPaymentModule();
+	251	$this->logger->warning("Unable to update inventory for order after payment was processed.", $logContext);
+	253	$this->logger->notice("Successfully re-applied inventory update for order.", $logContext);
+	265	$this->logger->notice("Returned inventory for order, payment was not processed successfully.", $logContext);
+	277	$this->logger->warning("Unable to delete reversal record");
+	299	'Payment response was received for order but async inventory tracking record was not found',
+	300	['orderId' => $orderId]
+	320	$messageText = $this->lang->get('AsyncInventoryStoreLogMessage', ['orderId' => $orderId]);
+	321	$summaryText = $this->lang->get('AsyncInventoryStoreLogSummary', ['orderId' => $orderId]);
+	339	$messageText = $this->lang->get('AsyncInventoryDashboardMessage', ['providerName' => $gatewayName]);
+	344	'context' => "dashboard",
+	345	'dismissable' => true,
+	346	'message' => $messageText,
+	348	'permission' => 0,
+	403	if ($order['ordinventoryupdated'] == 0) {
+	422	WHERE orderorderid='%d' AND ordprodtype!=3 AND ordprodid!=0
+	434	$product['orderprodid'],
+	435	$product['ordprodid']
+	442	$product['ordprodid'],
+	444	$product['prodinvtrack'],
+	445	$product['ordprodqty'],
+	457	$updatedOrder = ['ordinventoryupdated' => 0];
+	458	$db->UpdateQuery("orders", $updatedOrder, sprintf("orderid='%d'", $db->Quote($orderId)));
+	13	'ordcoupid' => null,
+	14	'ordcouporderid' => null,
+	15	'ordcoupprodid' => null,
+	16	'ordcouponid' => null,
+	17	'ordcouponcode' => null,
+	18	'ordcouponamount' => null,
+	19	'ordcoupontype' => null,
+	21	'name' => null
+	13	'orddownid' => null,
+	14	'orderid' => null,
+	15	'downloadid' => null,
+	16	'numdownloads' => null,
+	17	'downloadexpires' => null,
+	18	'maxdownloads' => null
+	51	if (strpos($this->orderToken, ',') !== false) {
+	55	$data = $this->orderProductId . ',' . $this->productId . ',' . $this->orderId . ',' . $this->orderToken;
+	58	$data .= ',' . $this->productDownloadId;
+	61	// Create some random "noise" text
+	68	$data .= ',' . $gibberish;
+	34	'generic' => GenericEvent::class,
+	35	'pending' => PendingEvent::class,
+	107	public function getCreatedAt(string $timezone = 'UTC'): DateTimeImmutable
+	109	$datetime = new DateTimeImmutable('now', new DateTimeZone($timezone));
+	111	return $datetime->modify('@' . $this->createdAt);
+	176	'id' => $this->getId(),
+	178	'type' => $this->getType()->value(),
+	179	'source' => $this->getSource(),
+	180	'summary' => $this->getSummary(),
+	194	return 'generic';
+	7	const INCOMING = 'incoming';
+	8	const OUTGOING = 'outgoing';
+	15	'messageid' => null,
+	16	'messagefrom' => null,
+	17	'subject' => null,
+	18	'message' => null,
+	19	'datestamp' => null,
+	20	'messageorderid' => null,
+	21	'messagestatus' => null,
+	22	'staffuserid' => null,
+	23	'isflagged' => null,
+	136	if ($this->getMessageFrom() == 'customer') {
+	117	'digital' => [],
+	118	'physical' => [],
+	119	'giftcertificate' => [],
+	144	'orderid' => null,
+	145	'ordtoken' => null,
+	146	'ordcustid' => null,
+	147	'orddate' => null,
+	148	'ordlastmodified' => null,
+	171	'ordstatus' => null,
+	172	'ordtotalqty' => null,
+	173	'ordtotalshipped' => null,
+	174	'orderpaymentmethod' => null,
+	175	'orderpaymentmodule' => null,
+	176	'ordpayproviderid' => null,
+	177	'ordpaymentstatus' => null,
+	179	'ordrefundedamount' => null,
+	180	'ordbillfirstname' => null,
+	181	'ordbilllastname' => null,
+	182	'ordbillcompany' => null,
+	183	'ordbillstreet1' => null,
+	184	'ordbillstreet2' => null,
+	185	'ordbillsuburb' => null,
+	186	'ordbillstate' => null,
+	187	'ordbillzip' => null,
+	188	'ordbillcountry' => null,
+	189	'ordbillcountrycode' => null,
+	190	'ordbillcountryid' => null,
+	191	'ordbillstateid' => null,
+	192	'ordbillphone' => null,
+	193	'ordbillemail' => null,
+	194	'ordisdigital' => null,
+	195	'orddateshipped' => null,
+	196	'ordstorecreditamount' => null,
+	197	'ordgiftcertificateamount' => null,
+	198	'ordinventoryupdated' => null,
+	199	'ordonlygiftcerts' => null,
+	200	'extrainfo' => null,
+	201	'ordipaddress' => null,
+	202	'ordgeoipcountry' => null,
+	203	'ordgeoipcountrycode' => null,
+	204	'ordcurrencyid' => null,
+	205	'orddefaultcurrencyid' => null,
+	206	'ordcurrencyexchangerate' => null,
+	207	'ordnotes' => null,
+	208	'ordcustmessage' => null,
+	209	'ordformsessionid' => null,
+	210	'orddiscountamount' => null,
+	213	'deleted' => null,
+	255	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	825	$billingFullName .= ' ' . $this->getBillingLastName();
+	1500	|| empty($this->products['digital'])
+	1501	&& empty($this->products['physical'])
+	1502	&& empty($this->products['giftcertificate']));
+	1513	$productLists['digital'],
+	1514	$productLists['physical'],
+	1515	$productLists['giftcertificate']
+	1520	* @param string $type The type of product to get. One of 'digital', 'physical', 'giftcertificate'.
+	1535	return $this->getProductsByType('physical');
+	1543	return $this->getProductsByType('digital');
+	1641	*             the payment provider should be referred to as 'external IDs'
+	1642	*             not 'transaction IDs'. We now have our own internal
+	1820	throw new InvalidArgumentException('Amount must be positive');
+	2032	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2097	if (Experiment::isOn('ORDERS-1799.manual-discount-api-taxes')) {
+	2182	$shipmentQuery = new SelectQuery("SELECT shipmentid FROM shipments");
+	2183	$shipmentQuery->whereEquals('shiporderid', $this->getId());
+	2187	$query->whereInSubQuery('shipid', $shipmentQuery->toSql());
+	2192	$id = $row['itemordprodid'];
+	2196	$shipped[$id] += (int)$row['itemqty'];
+	2210	$products = $this->getProductsByType('physical');
+	2227	'product' => $product,
+	2228	'quantity' => $quantity,
+	2246	if (isset($orderStatusObj['name'])) {
+	2247	return $orderStatusObj['name'];
+	2249	throw new Exception("Invalid order status id.");
+	2254	* Returns all possible Order statuses ("Incomplete", "Pending", "Shipped", ...)
+	2263	$status['id'] = (int)$status['id'];
+	2264	$status['order'] = (int)$status['order'];
+	2278	return self::find('`ordcustid` = ' . (int)$customerId)->sort('orddate', 'DESC')->limit(1)->first();
+	2306	$query->whereEquals('orderorderid', $this->getId());
+	2449	'orderId' => $this->getId(),
+	2450	'id' => $this->getId(),
+	45	$orderTableQuery = "INSERT IGNORE INTO orders (orderid) VALUES (" . $this->db->quote($desiredNextOrderId - 1) . ")";
+	50	$result = $this->db->query("SHOW TABLE STATUS WHERE Name = 'orders'");
+	68	$query = "SHOW CREATE TABLE `orders`";
+	86	$countOrdersQuery = "SELECT orderid FROM `orders` ORDER BY orderid desc LIMIT 1";
+	55	self::INCOMPLETE => 'An incomplete order happens when a shopper reached the payment page, but did not complete the transaction.',
+	56	self::PENDING => 'Customer started the checkout process, but did not complete it.',
+	58	self::SHIPPED => 'Order has been shipped, but receipt has not been confirmed; seller has used the Ship Items action.',
+	59	self::REFUNDED => 'Seller has used the Refund action.',
+	60	self::CANCELLED => 'Seller has cancelled an order, due to a stock inconsistency or other reasons.',
+	61	self::DECLINED => 'Seller has marked the order as declined for lack of manual payment, or other reasons.',
+	65	self::COMPLETED => 'Client has paid for their digital product and their file(s) are available for download.',
+	68	self::DISPUTED => 'Customer has initiated a dispute resolution process for the PayPal transaction that paid for the order.',
+	14	const AMEX = 'AMEX';
+	15	const MASTERCARD = 'MC';
+	16	const VISA = 'VISA';
+	20	const AUTHORIZED = 'authorized';
+	21	const CAPTURED = 'captured';
+	22	const DECLINED = 'declined';
+	24	const PAID = 'paid';
+	26	const PENDING = 'pending';
+	27	const REFUNDED = 'refunded';
+	28	const VOID = 'void';
+	27	throw new \InvalidArgumentException('Invalid Download Hash');
+	24	"returnid" => null,
+	25	"retorderid" => null,
+	26	"retcustomerid" => null,
+	27	"retprodid" => null,
+	28	"retprodname" => null,
+	29	"retprodcost" => null,
+	30	"retprodqty" => null,
+	31	"retstatus" => null,
+	32	"retreason" => null,
+	33	"retaction" => null,
+	34	"retdaterequested" => null,
+	35	"retcomment" => null,
+	36	"retuserid" => null,
+	37	"retreceivedcredit" => null,
+	38	"retordprodid" => null,
+	39	"retstaffnotes" => null,
+	42	"retprodvariationid" => null,
+	43	"retprodoptions" => null,
+	75	return self::find('retorderid = ' . (int)($orderId));
+	14	'shipmentid' => null,
+	15	'shipcustid' => null,
+	16	'shipdate' => null,
+	17	'shiptrackno' => null,
+	18	'shiplabelprinted' => null,
+	26	'shipproviderpackaging' => null,
+	27	'shipproviderdeliveryservice' => null,
+	28	'shipproviderreference' => null,
+	29	'shipmethod' => null,
+	30	'shiporderid' => null,
+	31	'shiporderdate' => null,
+	32	'shipcomments' => null,
+	33	'shipweight' => null,
+	34	'width' => null,
+	35	'height' => null,
+	36	'length' => null,
+	37	'shipbillfirstname' => null,
+	38	'shipbilllastname' => null,
+	39	'shipbillcompany' => null,
+	40	'shipbillstreet1' => null,
+	41	'shipbillstreet2' => null,
+	42	'shipbillsuburb' => null,
+	43	'shipbillstate' => null,
+	44	'shipbillzip' => null,
+	45	'shipbillcountry' => null,
+	46	'shipbillcountrycode' => null,
+	47	'shipbillcountryid' => null,
+	48	'shipbillstateid' => null,
+	49	'shipbillphone' => null,
+	50	'shipbillemail' => null,
+	51	'shipshipfirstname' => null,
+	52	'shipshiplastname' => null,
+	53	'shipshipcompany' => null,
+	54	'shipshipstreet1' => null,
+	55	'shipshipstreet2' => null,
+	56	'shipshipsuburb' => null,
+	57	'shipshipstate' => null,
+	58	'shipshipzip' => null,
+	59	'shipshipcountry' => null,
+	60	'shipshipcountrycode' => null,
+	61	'shipshipcountryid' => null,
+	62	'shipshipstateid' => null,
+	63	'shipshipphone' => null,
+	64	'shipshipemail' => null,
+	117	return $this->get('shipweight');
+	122	return $this->get('width');
+	127	return $this->get('height');
+	132	return $this->get('length');
+	138	'width' => $this->getWidth(),
+	139	'height' => $this->getHeight(),
+	140	'length' => $this->getLength(),
+	293	'quantity' => (int) $shipmentItem->getItemQty(),
+	331	return $this->getShipCountryCode() === 'US' && stripos($this->getShipState(), 'Armed Forces') !== false;
+	12	'itemid' => null,
+	13	'itemordprodid' => null,
+	14	'itemprodeventdate' => null,
+	15	'itemprodeventname' => null,
+	16	'itemprodid' => null,
+	17	'itemprodname' => null,
+	18	'itemprodoptions' => null,
+	19	'itemprodsku' => null,
+	20	'itemprodvariationid' => null,
+	21	'itemqty' => null,
+	22	'ordprodbin' => null,
+	25	'shipid' => null,
+	36	'id' => null,
+	42	'tax' => null,
+	43	'discounts' => null,
+	44	'method' => null,
+	45	'module' => null,
+	9	'id'                         => null,
+	14	'name'                       => null,
+	15	'class'                      => null,
+	16	'rate'                       => null,
+	17	'priority'                   => null,
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Transactions/Serializers/AvsResultSerializer.php: 
+	16	'code' => $avsResult->getCode(),
+	17	'message' => $avsResult->getMessage(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Transactions/Serializers/CvvResultSerializer.php: 
+	16	'code' => $avsResult->getCode(),
+	17	'message' => $avsResult->getMessage(),
+	15	'code' => $cvvResult->getCode(),
+	16	'message' => $cvvResult->getMessage(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Transactions/Serializers/GiftCertificateInternalApiSerializer.php: 
+	16	'code' => $avsResult->getCode(),
+	17	'message' => $avsResult->getMessage(),
+	15	'code' => $cvvResult->getCode(),
+	16	'message' => $cvvResult->getMessage(),
+	16	'code' => $giftCertificate->getCode(),
+	20	'status' => $giftCertificate->getStatus(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Transactions/Serializers/GiftCertificateSerializer.php: 
+	16	'code' => $avsResult->getCode(),
+	17	'message' => $avsResult->getMessage(),
+	15	'code' => $cvvResult->getCode(),
+	16	'message' => $cvvResult->getMessage(),
+	16	'code' => $giftCertificate->getCode(),
+	20	'status' => $giftCertificate->getStatus(),
+	16	'code' => $giftCertificate->getCode(),
+	20	'status' => $giftCertificate->getStatus(),
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Transactions/TransactionFactory.php: 
+	10	'id' => 'id',
+	14	'amount' => 'amount',
+	15	'currency' => 'currency',
+	19	'test' => 'test',
+	52	switch ($result['method']) {
+	67	$result['offline'] = $this->buildOfflineFromArray($extraParams);
+	70	$result['manual'] = $this->buildCustomPaymentFromArray($extraParams);
+	84	$result['test'] = $result['test'] ?? false;
+	96	switch ($transactionArray['method']) {
+	109	$transactionArray['offline'] = $this->buildOfflineFromArray($transactionArray['offline'] ?? []);
+	112	$transactionArray['manual'] = $this->buildCustomPaymentFromArray($transactionArray['manual'] ?? []);
+	126	$transactionArray['amount'] = $transactionArray['amount'] * 100;
+	179	$code = $giftCertArray['code'] ?? '';
+	183	$status = $giftCertArray['status'] ?? '';
+	219	$code = $cvvResult['code'] ?? '';
+	220	$message = $cvvResult['message'] ?? '';
+	232	$code = $avsResult['code'] ?? '';
+	233	$message = $avsResult['message'] ?? '';
+
+/Users/roman.leshchenko/Documents/cloud-dev-vm/bcappvm/codebases/bigcommerce/app/model/Orders/Transactions/TransactionIdExtractor.php: 
+	10	'id' => 'id',
+	14	'amount' => 'amount',
+	15	'currency' => 'currency',
+	19	'test' => 'test',
+	52	switch ($result['method']) {
+	67	$result['offline'] = $this->buildOfflineFromArray($extraParams);
+	70	$result['manual'] = $this->buildCustomPaymentFromArray($extraParams);
+	84	$result['test'] = $result['test'] ?? false;
+	96	switch ($transactionArray['method']) {
+	109	$transactionArray['offline'] = $this->buildOfflineFromArray($transactionArray['offline'] ?? []);
+	112	$transactionArray['manual'] = $this->buildCustomPaymentFromArray($transactionArray['manual'] ?? []);
+	126	$transactionArray['amount'] = $transactionArray['amount'] * 100;
+	179	$code = $giftCertArray['code'] ?? '';
+	183	$status = $giftCertArray['status'] ?? '';
+	219	$code = $cvvResult['code'] ?? '';
+	220	$message = $cvvResult['message'] ?? '';
+	232	$code = $avsResult['code'] ?? '';
+	233	$message = $avsResult['message'] ?? '';
+	21	case 'adyen':
+	22	return $data['pspReference'];
+	23	case 'afterpay':
+	24	case 'braintree':
+	25	case 'eway':
+	26	case 'hps':
+	27	case 'klarna':
+	28	case 'migs':
+	29	case 'nmi':
+	30	case 'payflow':
+	31	case 'paypal':
+	32	case 'quickbooks':
+	33	case 'stripe':
+	34	case 'usaepay':
+	35	return $data['authorization'];
+	36	case 'authorizenet':
+	38	case 'cybersource':
+	39	return $data['params']['requestID'];
+	40	case 'elavon':
+	42	case 'firstdatae4v14':
+	44	case 'orbital':
+	46	case 'sagepay':
+	47	return $data['params']['VPSTxId'];
+	48	case 'securenet':
+	49	return $data['params']['transactionid'];
+	50	case 'squarev2':
+	52	case 'vantiv':
+	53	return $data['params']['litleTxnId'];
+	54	case 'vantivcore':
+
+Total count: 3189
