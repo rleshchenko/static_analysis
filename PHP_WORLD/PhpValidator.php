@@ -16,6 +16,9 @@ class PhpValidator
                 foreach ($folders as $folder) {
                     $result = $this->getDirContents($folder);
                 }
+                if (isset($params['mode'])) {
+                    $result = $this->getResultStringsCount($result);
+                }
             } catch (Throwable $e) {
             } finally {
                 echo json_encode([$result]);
@@ -50,6 +53,11 @@ class PhpValidator
                         )
                     )
                 );
+                $data = preg_grep("#'\p{Lu}#u", $data);
+                $data = preg_grep("/\b(\w*this->i18n->translate\w*)\b/", $data, PREG_GREP_INVERT);
+                $data = preg_grep("/\b(\w*this->i18n->noTranslate\w*)\b/", $data, PREG_GREP_INVERT);
+                $data = preg_grep("/\b(\w*case '\w*)\b/", $data, PREG_GREP_INVERT);
+                $data = preg_grep("/((['\"]).[a-z]*)([A-Z]*?)([A-Z][a-z]+)/", $data, PREG_GREP_INVERT); // camelCase with '
 
                 foreach ($data as $stringNumber => $stringValue) {
                     $arrayData[] = [$stringNumber, $stringValue];
@@ -61,11 +69,31 @@ class PhpValidator
                         $arrayData
                     ];
                 }
-            } else if ($value !== '.' && $value !== '..') {
+            } else if ($value !== '.' && $value !== '..' && $value !=='.DS_Store') {
                 $this->getDirContents($path, $results);
             }
         }
 
         return $results;
+    }
+
+    /**
+     * @param array $result
+     * @return array
+     */
+    private function getResultStringsCount(array $result): array
+    {
+        $wholeStringsInFile = 0;
+        $untranslatedStrings = 0;
+
+        foreach ($result as $item) {
+            $wholeStringsInFile += count(file($item[0])) + 1;
+            $untranslatedStrings += count($item[1]);
+        }
+
+        return [
+            $wholeStringsInFile,
+            $untranslatedStrings
+        ];
     }
 }

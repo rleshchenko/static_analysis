@@ -16,7 +16,7 @@ class AngularValidator:
             data = theFile.read()
             return data
 
-    def execute(self, filePath):
+    def execute(self, filePath, mode=''):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
 
@@ -28,12 +28,25 @@ class AngularValidator:
                         and tag.find(text=True, recursive=False) is not None
                         and 'translate' not in tag.attrs
                         and tag.translate is not ""
+
         )
 
         filteredResults = self.filterHtmlElements(searchResults)
-        numeredResults = self.numerateResults(filePath, filteredResults)
 
-        return numeredResults
+        if filteredResults is None:
+            return
+
+        if len(filteredResults) is 0:
+            return
+
+        if mode == 'count':
+            return [
+                len(open(filePath).readlines()),
+                sum([(lambda item: 1+str(item).count('\n'))(item) for item in filteredResults])
+
+            ]
+
+        return self.numerateResults(filePath, filteredResults)
 
     def filterHtmlElements(self, htmlElements):
         filteredResults = []
@@ -42,7 +55,7 @@ class AngularValidator:
                     or element.text.find('{{ ::', 0, -1) != -1:
                 continue
             else:
-                if element.find(text=True, recursive=False).strip() == '':
+                if len(element.find(text=True, recursive=False).strip()) is 0:
                     continue
 
                 if self.checkParentObject(element):

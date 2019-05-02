@@ -1,106 +1,79 @@
-import os, fnmatch, glob, importlib
+import os, importlib, argparse, glob
 
 
 class Initialize:
-    """Main entrypoint class for the static code analysis"""
-    _validators = []
+    parser = ''
+    scanners = []
 
     def __init__(self):
-        """Initialize class constructor"""
-        self.__import_validators()
+        self.parser = self.__setup_parser()
 
     def execute(self):
-        write_report = raw_input('Create report file? (Yes => 1 / No => 0):')
-        try:
-            results =  self.__validate()
-        except KeyboardInterrupt:
-            print '\nProcess interrupted from the keyboard'
-            return
-        except Exception, e:
-            print e
-            return
+        if self.parser:
+            args = self.parser.parse_args()
+            self.__import_scanners()
+            if args.__contains__('scan_type'):
+                scanner = self.__get_scanner(args.scan_type)
+            else:
+                scanner = self.__get_scanner('flex')
 
-        if write_report == '1':
-            return self.__writeResults(results)
+            scanner.execute()
 
-        return self.__print_results(results)
-
-    def __validate(self):
-        results = []
-
-        for validator in self._validators:
-            validator.init()
-            if hasattr(validator, 'folder') and validator.folder:
-                files = self.__get_files_for_validator(validator.folder, validator.EXTENSIONS)
-                for filePath in files:
-                    validated_result = validator.execute(filePath)
-                    if len(validated_result):
-                        results.append([filePath, validated_result])
-
-            if hasattr(validator, 'url') and validator.url is not '':
-                results += (validator.execute())
-
-        return results
-
-    def __import_validators(self):
-        """Returns list of the avaliable validators"""
-        os.chdir('Validators')
-        module_list = glob.glob(os.path.dirname('./Validators') + "/*.py")
+    def __import_scanners(self):
+        module_list = os.listdir('./Scanners')
 
         for moduleItem in module_list:
-            if moduleItem.find("init") is not -1:
+            if moduleItem.find("init") is not -1 or moduleItem.find("pyc") is not -1:
                 continue
-            module = importlib.import_module('Validators.' + moduleItem[2:-3])
-            class_name = getattr(module, moduleItem[2:-3])
+            os.chdir('Scanners')
+            module = importlib.import_module('Scanners.' + moduleItem[0:-3])
+            class_name = getattr(module, moduleItem[0:-3])
+            os.chdir('../')
 
-            self._validators.append(class_name())
-        os.chdir('../')
+            self.scanners.append(class_name())
 
-    def __get_files_for_validator(self, folder_name, file_extensions):
-        """Returns file list depends on given extension """
-        files = []
+    def __setup_parser(self):
+        parser = argparse.ArgumentParser(description='Parse Bigcommerce application.')
+        parser.add_argument(
+            'scan_type',
+            metavar='parser',
+            type=str,
+            default=self.__get_available_scanners(),
+            help='Parser type'
+        )
 
-        if isinstance(file_extensions, str):
-            file_extensions = [file_extensions]
+        parser.add_argument(
+            '--type',
+            dest='accumulate',
+            action='store_const',
+            const=sum,
+            default=max,
+            help='Provided scanner'
+        )
 
-        for fileExtension in file_extensions:
-            for root, dirnames, filenames in os.walk(folder_name):
-                for filename in fnmatch.filter(filenames, '*.' + fileExtension):
-                    if folder_name in ['dist', 'node_modules']:
-                        continue
+        return parser
 
-                    files.append(os.path.join(root, filename))
+    def __get_available_scanners(self):
+        list = os.listdir('./Scanners')
+        if list[0] == '__init__.py':
+            list.pop(0)
 
-        return files
+        for i, item in enumerate(list):
+            item = item[0:-3]
+            item = item[0].lower() + item[1:]
+            list[i] = item
 
-    def __print_results(self, results):
-        """Renders result in the console"""
-        print ("Following tags don't have proper translation: \n")
-        html_elements_count = 0
-        for result in results:
-            print (result[0] + ': \n')
-            for num, line in result[1]:
-                print ('\t' + str(num) + '\t' + line)
-                html_elements_count += 1
-        print ('\n')
+        return list
 
-        print "Total count: " + str(html_elements_count)
+    def __get_scanner(self, scanner_type):
+        scanner_type = scanner_type.capitalize()
+        for scaner in self.scanners:
+            if scaner.__class__.__name__ == scanner_type:
+                return scaner
 
-    def __writeResults(self, results):
-        """Renders result to the file"""
-        file = open('report.txt', 'w')
-        file.write('Following tags don\'t have proper translation: \n')
-        html_elements_count = 0
-        for result in results:
-            file.write(result[0] + ': \n')
-            for num, line in result[1]:
-                file.write('\t' + str(num) + '\t' + line + '\n')
-                html_elements_count  += 1
+        print 'There is no such a scanner. Proceeding with flex'
+        return self.scanners[1]
 
-            file.write('\n')
-
-        file.write("Total count: " + str(html_elements_count))
-        file.close()
 
 
 Initialize().execute()

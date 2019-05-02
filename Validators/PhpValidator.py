@@ -24,14 +24,22 @@ class PhpValidator:
         self.url = url if len(url) > 0 else self.url
 
 
-    def execute(self):
-        if self.folders is not '' and self.url is not '':
-            response = requests.get('http://' + self.url + '/' + '?folders=' + self.folders)
+    def execute(self, mode=''):
+        if len(self.folders) is not 0 and len(self.url) is not 0:
+            requestUrl = self.__build_url(mode)
+            response = requests.get(requestUrl)
             if response.status_code == 200:
                 response = json.loads(response.text)
-
             return response[0]
 
     def __del__(self):
-        if self.process is not None:
+        import os, signal
+        try:
             os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
+        except OSError:
+            return
+
+    def __build_url(self, mode):
+        if len(mode) == 0:
+            return 'http://' + self.url + '/' + '?folders=' + self.folders
+        return 'http://' + self.url + '/' + '?folders=' + self.folders + '&mode=' + mode
