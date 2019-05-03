@@ -5,11 +5,6 @@
  */
 class PhpValidator
 {
-    /**
-     * @var array
-     */
-    private $incomingResult;
-
     public function execute()
     {
         $params = $_GET;
@@ -19,30 +14,30 @@ class PhpValidator
 
             try {
                 foreach ($folders as $folder) {
-                    if (empty($this->incomingResult)) {
-                        $this->incomingResult = $this->getDirContents($folder);
-                    } else {
+                    if (empty($result)) {
                         $result = $this->getDirContents($folder);
-                        $this->incomingResult = array_merge($this->incomingResult, $result);
+                        continue;
                     }
+                    $data = $this->getDirContents($folder);
+                    $result = array_merge($result, $data);
                 }
                 if (isset($params['mode'])) {
                     $result = $this->getResultStringsCount($result);
                 }
             } catch (Throwable $e) {
             } finally {
-                echo json_encode([$this->incomingResult]);
+                echo json_encode([$result]);
             }
         }
     }
 
     /**
-     * @param       $dir
-     * @param array $results
+     * @param string $dir
+     * @param array  $results
      *
      * @return array
      */
-    private function getDirContents($dir, &$results = []): array
+    private function getDirContents(string $dir, &$results = []): array
     {
         $files = [];
         $arrayData = [];
@@ -52,7 +47,7 @@ class PhpValidator
         }
 
         foreach ($files as $key => $value) {
-            $path = realpath($dir.DIRECTORY_SEPARATOR.$value);
+            $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
 
             if (!is_dir($path) && strpos($path, '.php')) {
 
