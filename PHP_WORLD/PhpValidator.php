@@ -19,9 +19,9 @@ class PhpValidator
 
             try {
                 foreach ($folders as $folder) {
-                    if(empty($this->incomingResult)){
+                    if (empty($this->incomingResult)) {
                         $this->incomingResult = $this->getDirContents($folder);
-                    }else{
+                    } else {
                         $result = $this->getDirContents($folder);
                         $this->incomingResult = array_merge($this->incomingResult, $result);
                     }
