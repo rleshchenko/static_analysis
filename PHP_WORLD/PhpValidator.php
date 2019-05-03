@@ -5,6 +5,11 @@
  */
 class PhpValidator
 {
+    /**
+     * @var array
+     */
+    private $incomingResult;
+
     public function execute()
     {
         $params = $_GET;
@@ -14,21 +19,27 @@ class PhpValidator
 
             try {
                 foreach ($folders as $folder) {
-                    $result = $this->getDirContents($folder);
+                    if(empty($this->incomingResult)){
+                        $this->incomingResult = $this->getDirContents($folder);
+                    }else{
+                        $result = $this->getDirContents($folder);
+                        $this->incomingResult = array_merge($this->incomingResult, $result);
+                    }
                 }
                 if (isset($params['mode'])) {
                     $result = $this->getResultStringsCount($result);
                 }
             } catch (Throwable $e) {
             } finally {
-                echo json_encode([$result]);
+                echo json_encode([$this->incomingResult]);
             }
         }
     }
 
     /**
-     * @param $dir
+     * @param       $dir
      * @param array $results
+     *
      * @return array
      */
     private function getDirContents($dir, &$results = []): array
@@ -41,7 +52,7 @@ class PhpValidator
         }
 
         foreach ($files as $key => $value) {
-            $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+            $path = realpath($dir.DIRECTORY_SEPARATOR.$value);
 
             if (!is_dir($path) && strpos($path, '.php')) {
 
@@ -66,10 +77,10 @@ class PhpValidator
 
                     $results[] = [
                         $path,
-                        $arrayData
+                        $arrayData,
                     ];
                 }
-            } else if ($value !== '.' && $value !== '..' && $value !=='.DS_Store') {
+            } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
                 $this->getDirContents($path, $results);
             }
         }
@@ -79,6 +90,7 @@ class PhpValidator
 
     /**
      * @param array $result
+     *
      * @return array
      */
     private function getResultStringsCount(array $result): array
@@ -93,7 +105,7 @@ class PhpValidator
 
         return [
             $wholeStringsInFile,
-            $untranslatedStrings
+            $untranslatedStrings,
         ];
     }
 }
