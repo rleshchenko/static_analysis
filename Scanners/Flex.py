@@ -18,7 +18,6 @@ class Flex:
 
         return self.print_results(results)
 
-
     def validate(self):
         results = []
 

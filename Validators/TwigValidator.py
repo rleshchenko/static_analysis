@@ -22,20 +22,31 @@ class TwigValidator:
         fileContent = self.getFileContent(filePath)
 
         soup = BeautifulSoup(fileContent, 'html.parser')
-        searchResults = soup.find_all(
-            lambda tag: len(tag.text) is not 0
-                        and len(re.findall('[\\n\\r]+', tag.text)) is 0
-                        and len(re.findall(r'({%\s*translate)|({%\s*lang)|({{\s*lang.)|({%\s*jslang)', tag.text)) is 0
-                        and len(re.findall(r'(\s*translate)|(\s*lang)|(\s*lang.)|(\s*jslang)', tag.text)) is 0
-                        and tag.text.find('translate') is -1
-                        and tag.name not in ['style', 'script']
-        )
+        if mode != 'revers':
+            searchResults = soup.find_all(
+                lambda tag: len(tag.text) is not 0
+                            and len(re.findall('[\\n\\r]+', tag.text)) is 0
+                            and len(re.findall(r'({%\s*translate)|({%\s*lang)|({{\s*lang.)|({%\s*jslang)', tag.text)) is 0
+                            and len(re.findall(r'(\s*translate)|(\s*lang)|(\s*lang.)|(\s*jslang)', tag.text)) is 0
+                            and tag.text.find('translate') is -1
+                            and tag.name not in ['style', 'script']
+            )
+        if mode == 'revers':
+            searchResults = soup.find_all(
+                lambda tag: len(tag.text) is not 0
+                            and len(re.findall('[\\n\\r]+', tag.text)) is 0
+                            and len(re.findall(r'({%\s*translate)|({%\s*lang)|({{\s*lang.)|({%\s*jslang)', tag.text)) is not -1
+                            and len(re.findall(r'(\s*translate)|(\s*lang)|(\s*lang.)|(\s*jslang)', tag.text)) is not -1
+                            and tag.text.find('translate') is not -1
+                            and tag.name not in ['style', 'script']
+            )
+
         if len(searchResults) is 0:
             return
 
         searchResults = self.__filter_html_elements(searchResults)
 
-        if mode == 'count':
+        if mode == 'count' or mode == 'revers':
             return [
                 len(open(filePath).readlines()),
                 sum([(lambda item: 1+str(item).count('\n'))(item) for item in searchResults])

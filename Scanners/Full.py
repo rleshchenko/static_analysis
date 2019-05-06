@@ -2,7 +2,7 @@ from Flex import Flex
 
 
 class Full(Flex):
-    mode = 0
+    mode = 'count'
 
     def validate(self):
         whole_string_count = 0
@@ -14,7 +14,7 @@ class Full(Flex):
             if hasattr(validator, 'folder') and validator.folder:
                 files = self._get_files_for_validator(validator.folder, validator.EXTENSIONS)
                 for filePath in files:
-                    validated_result = validator.execute(filePath, 'count')
+                    validated_result = validator.execute(filePath, self.mode)
                     if validated_result is None:
                         continue
                     if len(validated_result) is not 0:
