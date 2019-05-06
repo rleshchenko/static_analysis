@@ -14,15 +14,7 @@ class PhpValidator
 
             try {
                 foreach ($folders as $folder) {
-                    if (isset($params['mode']) && $params['mode'] === 'reverse') {
-                        $result = $this->aggregateResult($result, $folder, $params['mode']);
-                    }
-                    if (isset($params['mode']) && $params['mode'] === 'count') {
-                        $result = $this->aggregateResult($result, $folder, $params['mode']);
-                    }
-                    if (isset($params['mode']) && $params['mode'] === 'flex') {
-                        $result = $this->aggregateResult($result, $folder, $params['mode']);
-                    }
+                    $result = $this->aggregateResult($result, $folder, $params['mode']);
                 }
                 if ($params['mode'] === 'reverse' || $params['mode'] === 'count') {
                     $result = $this->getResultStringsCount($result);
