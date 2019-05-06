@@ -21,17 +21,29 @@ class AngularValidator:
         fileContent = self.getFileContent(filePath)
 
         soup = BeautifulSoup(fileContent, 'html.parser')
-        searchResults = soup.find_all(
-            lambda tag: len(tag.text) is not 0
-                        and tag.find(text=True, recursive=False) is not NavigableString
-                        and tag.find(text=True, recursive=False) is not '\n'
-                        and tag.find(text=True, recursive=False) is not None
-                        and 'translate' not in tag.attrs
-                        and tag.translate is not ""
 
-        )
+        if mode != 'revers':
+            searchResults = soup.find_all(
+                lambda tag: len(tag.text) is not 0
+                            and tag.find(text=True, recursive=False) is not NavigableString
+                            and tag.find(text=True, recursive=False) is not '\n'
+                            and tag.find(text=True, recursive=False) is not None
+                            and 'translate' not in tag.attrs
+                            and tag.translate is not ""
 
-        filteredResults = self.filterHtmlElements(searchResults)
+            )
+
+        if mode == 'revers':
+            searchResults = soup.find_all(
+                lambda tag: len(tag.text) is not 0
+                            and tag.find(text=True, recursive=False) is not NavigableString
+                            and tag.find(text=True, recursive=False) is not '\n'
+                            and tag.find(text=True, recursive=False) is not None
+                            and 'translate' in tag.attrs
+
+            )
+
+        filteredResults = self.filterHtmlElements(searchResults, mode)
 
         if filteredResults is None:
             return
@@ -39,26 +51,28 @@ class AngularValidator:
         if len(filteredResults) is 0:
             return
 
-        if mode == 'count':
+        if mode == 'count' or mode == 'revers':
             return [
                 len(open(filePath).readlines()),
-                sum([(lambda item: 1+str(item).count('\n'))(item) for item in filteredResults])
+                sum([(lambda item: 1 + str(item).count('\n'))(item) for item in filteredResults])
 
             ]
 
         return self.numerateResults(filePath, filteredResults)
 
-    def filterHtmlElements(self, htmlElements):
+    def filterHtmlElements(self, htmlElements, mode):
         filteredResults = []
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1 \
                     or element.text.find('{{ ::', 0, -1) != -1:
+                if mode == 'reverse':
+                    filteredResults.append(element)
                 continue
             else:
                 if len(element.find(text=True, recursive=False).strip()) is 0:
                     continue
 
-                if self.checkParentObject(element):
+                if self.checkParentObject(element) and mode != 'reverse':
                     filteredResults.append(element)
                     continue
 
