@@ -4,6 +4,7 @@ import subprocess
 import os
 import signal
 
+
 class PhpValidator:
     """Validator for the angular 1.5 html templates."""
     folders = ''
@@ -22,7 +23,6 @@ class PhpValidator:
         url = raw_input('Please provide php validator url(http://127.0.0.1:8000):')
         self.folders = raw_input('Please insert php folders, comma separated:')
         self.url = url if len(url) > 0 else self.url
-
 
     def execute(self, mode=''):
         if len(self.folders) is not 0 and len(self.url) is not 0:

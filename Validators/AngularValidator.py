@@ -22,7 +22,7 @@ class AngularValidator:
 
         soup = BeautifulSoup(fileContent, 'html.parser')
 
-        if mode != 'revers':
+        if mode != 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and tag.find(text=True, recursive=False) is not NavigableString
@@ -33,7 +33,7 @@ class AngularValidator:
 
             )
 
-        if mode == 'revers':
+        if mode == 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and tag.find(text=True, recursive=False) is not NavigableString
@@ -51,7 +51,7 @@ class AngularValidator:
         if len(filteredResults) is 0:
             return
 
-        if mode == 'count' or mode == 'revers':
+        if mode == 'count' or mode == 'reverse':
             return [
                 len(open(filePath).readlines()),
                 sum([(lambda item: 1 + str(item).count('\n'))(item) for item in filteredResults])

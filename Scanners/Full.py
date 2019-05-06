@@ -22,7 +22,7 @@ class Full(Flex):
                         untranslated_string_count+=validated_result[1]
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
-                validated_result = (validator.execute('count'))
+                validated_result = (validator.execute(self.mode))
                 whole_string_count += validated_result[0]
                 untranslated_string_count += validated_result[1]
 

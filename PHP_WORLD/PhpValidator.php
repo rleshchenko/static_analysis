@@ -14,7 +14,7 @@ class PhpValidator
 
             try {
                 foreach ($folders as $folder) {
-                    if (isset($params['mode'])) {
+                    if (isset($params['mode']) && $params['mode'] === 'reverse') {
                         $result = $this->getDirContentsReverse($folder);
                         $result = $this->getResultStringsCount($result);
                     } else {

@@ -22,7 +22,7 @@ class TwigValidator:
         fileContent = self.getFileContent(filePath)
 
         soup = BeautifulSoup(fileContent, 'html.parser')
-        if mode != 'revers':
+        if mode != 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and len(re.findall('[\\n\\r]+', tag.text)) is 0
@@ -31,7 +31,7 @@ class TwigValidator:
                             and tag.text.find('translate') is -1
                             and tag.name not in ['style', 'script']
             )
-        if mode == 'revers':
+        if mode == 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and len(re.findall('[\\n\\r]+', tag.text)) is 0
@@ -46,7 +46,7 @@ class TwigValidator:
 
         searchResults = self.__filter_html_elements(searchResults)
 
-        if mode == 'count' or mode == 'revers':
+        if mode == 'count' or mode == 'reverse':
             return [
                 len(open(filePath).readlines()),
                 sum([(lambda item: 1+str(item).count('\n'))(item) for item in searchResults])
