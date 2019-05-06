@@ -60,7 +60,13 @@ class Flex:
 
         for fileExtension in file_extensions:
             for root, dirnames, filenames in os.walk(folder_name):
-                if any(prohibitedFolderName in root for prohibitedFolderName in ['dist', 'node_modules', 'tests', 'git']):
+                if any(prohibitedFolderName in root for prohibitedFolderName in [
+                    'dist',
+                    'node_modules',
+                    'tests',
+                    'git',
+                    'bower_components'
+                ]):
                     continue
                 for filename in fnmatch.filter(filenames, '*.' + fileExtension):
                     if any(prohibited in filename for prohibited in [
