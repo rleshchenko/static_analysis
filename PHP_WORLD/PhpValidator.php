@@ -15,16 +15,17 @@ class PhpValidator
             try {
                 foreach ($folders as $folder) {
                     if (isset($params['mode']) && $params['mode'] === 'reverse') {
-                        $result = $this->getDirContentsReverse($folder);
-                        $result = $this->getResultStringsCount($result);
-                    } else {
-                        if (empty($result)) {
-                            $result = $this->getDirContents($folder);
-                            continue;
-                        }
-                        $data = $this->getDirContents($folder);
-                        $result = array_merge($result, $data);
+                        $result = $this->aggregateResult($result, $folder, $params['mode']);
                     }
+                    if (isset($params['mode']) && $params['mode'] === 'count') {
+                        $result = $this->aggregateResult($result, $folder, $params['mode']);
+                    }
+                    if (isset($params['mode']) && $params['mode'] === 'flex') {
+                        $result = $this->aggregateResult($result, $folder, $params['mode']);
+                    }
+                }
+                if ($params['mode'] === 'reverse' || $params['mode'] === 'count') {
+                    $result = $this->getResultStringsCount($result);
                 }
             } catch (Throwable $e) {
             } finally {
@@ -151,5 +152,29 @@ class PhpValidator
             $wholeStringsInFile,
             $untranslatedStrings,
         ];
+    }
+
+    /**
+     * @param array  $result
+     * @param string $folder
+     * @param string $mode
+     *
+     * @return array
+     */
+    private function aggregateResult(array $result, string $folder, string $mode): array
+    {
+        if ($mode === 'reverse') {
+            if (empty($result)) {
+                return $this->getDirContentsReverse($folder);
+            }
+            $data = $this->getDirContentsReverse($folder);
+        } else {
+            if (empty($result)) {
+                return $this->getDirContents($folder);
+            }
+            $data = $this->getDirContents($folder);
+        }
+
+        return array_merge($result, $data);
     }
 }

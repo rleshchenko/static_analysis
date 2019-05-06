@@ -1,6 +1,7 @@
 import os, fnmatch, glob, importlib
 
 class Flex:
+    mode = 'flex'
     """Main entrypoint class for the static code analysis"""
     _validators = []
 
@@ -26,14 +27,14 @@ class Flex:
             if hasattr(validator, 'folder') and validator.folder:
                 files = self._get_files_for_validator(validator.folder, validator.EXTENSIONS)
                 for filePath in files:
-                    validated_result = validator.execute(filePath)
+                    validated_result = validator.execute(filePath, self.mode)
                     if validated_result is None:
                         continue
                     if len(validated_result) is not 0:
                         results.append([filePath, validated_result])
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
-                results += (validator.execute())
+                results += (validator.execute(self.mode))
 
         return results
 
