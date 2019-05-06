@@ -60,8 +60,19 @@ class Flex:
 
         for fileExtension in file_extensions:
             for root, dirnames, filenames in os.walk(folder_name):
+                if any(prohibitedFolderName in root for prohibitedFolderName in ['dist', 'node_modules', 'tests', 'git']):
+                    continue
                 for filename in fnmatch.filter(filenames, '*.' + fileExtension):
-                    if folder_name in ['dist', 'node_modules']:
+                    if any(prohibited in filename for prohibited in [
+                        'eslint',
+                        'jest',
+                        'gulpfile',
+                        'min',
+                        'module',
+                        '.directive.'
+                        'mock',
+                        'config'
+                    ]):
                         continue
 
                     files.append(os.path.join(root, filename))
