@@ -14,15 +14,17 @@ class PhpValidator
 
             try {
                 foreach ($folders as $folder) {
-                    if (empty($result)) {
-                        $result = $this->getDirContents($folder);
-                        continue;
+                    if (isset($params['mode'])) {
+                        $result = $this->getDirContentsReverse($folder);
+                        $result = $this->getResultStringsCount($result);
+                    } else {
+                        if (empty($result)) {
+                            $result = $this->getDirContents($folder);
+                            continue;
+                        }
+                        $data = $this->getDirContents($folder);
+                        $result = array_merge($result, $data);
                     }
-                    $data = $this->getDirContents($folder);
-                    $result = array_merge($result, $data);
-                }
-                if (isset($params['mode'])) {
-                    $result = $this->getResultStringsCount($result);
                 }
             } catch (Throwable $e) {
             } finally {
@@ -77,6 +79,53 @@ class PhpValidator
                 }
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
                 $this->getDirContents($path, $results);
+            }
+        }
+
+        return $results;
+    }
+
+    /**
+     * @param string $dir
+     * @param array  $results
+     *
+     * @return array
+     */
+    private function getDirContentsReverse(string $dir, &$results = []): array
+    {
+        $files = [];
+        $arrayData = [];
+
+        if (is_dir($dir)) {
+            $files = scandir($dir);
+        }
+
+        foreach ($files as $key => $value) {
+            $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+
+            if (!is_dir($path) && strpos($path, '.php')) {
+
+                $data = array_filter(
+                    array_map(
+                        'trim',
+                        preg_grep("/\b(\w*this->i18n->\w*)\b/",
+                            file($path)
+                        )
+                    )
+                );
+
+                foreach ($data as $stringNumber => $stringValue) {
+                    $arrayData[] = [$stringNumber, $stringValue];
+                }
+                if (!empty($data)) {
+
+                    $results[] = [
+                        $path,
+                        $arrayData,
+                    ];
+                }
+            } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
+                $this->getDirContentsReverse($path, $results);
             }
         }
 
