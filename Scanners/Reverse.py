@@ -1,7 +1,8 @@
 from Full import Full
 
-class Revers(Full):
-    mode = 'revers'
+
+class Reverse(Full):
+    mode = 'reverse'
 
     def print_results(self, results):
         """Renders result in the console"""
