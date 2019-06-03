@@ -1,34 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const esprima = require('esprima');
 
-const dir = '/Users/roman.krasinskyi/Work/cloud-dev-vm/bcappvm/codebases/microapps/ng-shipments/src/app/create/create-details';
-
-// function walkJs(node, fn) {
-//   fn(node);
-//
-//   for (var key in node) {
-//     var obj = node[key];
-//
-//     if (typeof obj === 'object') {
-//       walkJs(obj, fn);
-//     }
-//   }
-// }
-//
-// var binaryExpressionWalkJs = function (node) {
-//   var res = '';
-//
-//   if (node.type === "Literal") {
-//     res = node.value;
-//   }
-//
-//   if (node.type === 'BinaryExpression' && node.operator === '+') {
-//     res += binaryExpressionWalkJs(node.left);
-//     res += binaryExpressionWalkJs(node.right);
-//   }
-//   return res;
-// };
+const dir = '/Users/roman.krasinskyi/Work/cloud-dev-vm/bcappvm/codebases/microapps/ng-shipments/src/app';
 
 const init = (dir) => {
   let filesList = [];
@@ -71,57 +44,54 @@ const init = (dir) => {
                 throw err;
               }
 
-              let results = data.toString().match(new RegExp(/^(?=.*(['"]).+?\1)(?!.*_)(?!.*[$].*).*/gm));
-              // results = data.toString().match(new RegExp(''));
+              const arr = [];
+              let dataArray = data.toString().split('\n');
 
-              console.log(resolvePath);
-              console.log(results);
-              console.log();
+              dataArray.forEach((string, index) => {
+                if (string.indexOf('gettextCatalog') !== -1) {
+                  return;
+                }
 
-              // const syntax = esprima.parse(data.toString(), {
-              //   tolerant: true
-              // });
+                let array =  string.match(/['"][^\s,$]([a-zA-Z0-9\s])(?!.*_).*?['"]/g);
 
-              // walkJs(syntax, function (node) {
-              //   if (node === null
-              //       || node.callee === undefined
-              //       || node.callee.object === undefined
-              //       || node.arguments === null
-              //       || !node.arguments.length) {
-              //     return;
-              //   }
-              //
-              //   if (node.callee.object.name !== undefined) {
-              //     console.log(node.arguments);
-              //     return;
-              //   }
-              //
-              //   // if (node !== null &&
-              //   //     node.type === 'CallExpression' &&
-              //   //     node.callee.object.name !== 'gettextCatalog' &&
-              //   //     node["arguments"] !== null &&
-              //   //     node["arguments"].length) {
-              //
-              //     const arg = node["arguments"][0];
-              //     let str;
-              //
-              //     switch (arg.type) {
-              //       case 'Literal':
-              //         str = arg.value;
-              //         break;
-              //       case 'BinaryExpression':
-              //         str = binaryExpressionWalkJs(arg);
-              //     }
-              //
-              //     if (str) {
-              //       // console.log(node);
-              //       // console.log(node.callee.object.name);
-              //       // console.log();
-              //       // console.log(str === 'USPS Other' ? node : '');
-              //       // console.log();
-              //     }
-              //   // }
-              // });
+                if (array === null) {
+                  return;
+                }
+
+                array.forEach(elem => {
+                  const tmp = elem.match(/['"][^ng,ui]([a-zA-Z0-9\s]).*?['"]/g);
+
+                  if (tmp === null) {
+                    return;
+                  }
+
+                  tmp.forEach(elem => {
+                    const tmp = elem.match(/['"][A-Z]([a-zA-Z0-9\s]).*?['"]/g);
+
+                    if (tmp === null) {
+                      return;
+                    }
+
+                    arr.push(`${index+1}. ${tmp}`);
+                  });
+                });
+              });
+
+              if (!arr.length) {
+                return;
+              }
+
+              fs.appendFileSync('report.txt', resolvePath, (err) => {
+                if (err) {
+                  throw err;
+                }
+              });
+
+              fs.appendFileSync('report.txt', `\n\t${arr.join(',\n\t')}\n`, (err) => {
+                if (err) {
+                  throw err;
+                }
+              });
             });
           }
 
@@ -134,4 +104,20 @@ const init = (dir) => {
   });
 };
 
-init(dir);
+fs.readFile('report.txt', (err) => {
+  if (err) {
+    init(dir);
+
+    return;
+  }
+
+  fs.unlink('report.txt', (err) => {
+    if (err) {
+      throw err;
+    }
+
+    console.log('File \'report.txt\' deleted successfully!');
+
+    init(dir);
+  });
+});
