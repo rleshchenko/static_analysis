@@ -52,7 +52,7 @@ class JsValidator {
     }
 
     /**
-     * @param {String§} file
+     * @param {String} file
      * @return {boolean}
      * @private
      */
