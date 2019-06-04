@@ -12,7 +12,7 @@ http.createServer((request, response) => {
             /['"][^\s,$]([a-zA-Z0-9\s])(?!.*_).*?['"]/g,
             /['"][^ng,ui]([a-zA-Z0-9\s]).*?['"]/g,
             /['"][A-Z]([a-zA-Z0-9\s]).*?['"]/g,
-        ]
+        ],
     });
 
     const data = jsValidator.init();
