@@ -1,123 +1,89 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = '/Users/roman.krasinskyi/Work/cloud-dev-vm/bcappvm/codebases/microapps/ng-shipments/src/app';
-
-const init = (dir) => {
-  let filesList = [];
-
-  fs.readdir(dir, {
-    encoding: 'utf8',
-    withFileTypes: true,
-  }, (err, files) => {
-    if (err) {
-      throw err;
+class JsValidator {
+    constructor(options) {
+        this._options = options;
     }
 
-    let pending = files.length;
+    init() {
+        const files = this._getFiles(this._options.dir);
 
-    if (!pending) {
-      return filesList;
+        return this._getResult(files);
     }
 
-    files.forEach((file) => {
-      const { name } = file;
-      const resolvePath = path.resolve(dir, name);
+    _getFiles(dir) {
+        const files = fs.readdirSync(dir, {
+            encoding: 'utf8',
+            withFileTypes: true,
+        });
 
-      fs.stat(resolvePath, (err, stat) => {
-        if (stat && stat.isDirectory()) {
-          init(resolvePath, (err, result) => {
-            if (err) {
-              throw err;
-            }
+        let filesArray = [];
 
-            filesList = filesList.concat(result);
+        files.forEach((file) => {
+            const { name } = file;
+            const resolvePath = path.resolve(dir, name);
+            const stat = fs.statSync(resolvePath);
 
-            if (!--pending) {
-              return filesList;
-            }
-          });
-        } else {
-          if (name.indexOf('js') !== -1 || name.indexOf('ts') !== -1) {
-            fs.readFile(resolvePath, (err, data) => {
-              if (err) {
-                throw err;
-              }
-
-              const arr = [];
-              let dataArray = data.toString().split('\n');
-
-              dataArray.forEach((string, index) => {
-                if (string.indexOf('gettextCatalog') !== -1) {
-                  return;
+            if (stat && stat.isDirectory()) {
+                filesArray = [ ...filesArray, ...this._getFiles(resolvePath) ];
+            } else {
+                if (this._checkFile(name)) {
+                    filesArray.push(resolvePath);
                 }
+            }
+        });
 
-                let array =  string.match(/['"][^\s,$]([a-zA-Z0-9\s])(?!.*_).*?['"]/g);
+        return filesArray;
+    }
 
-                if (array === null) {
-                  return;
-                }
+    _checkFile(file) {
+        return !!this._options.extensions.filter(extension => file.indexOf(extension) !== -1).length;
+    }
 
-                array.forEach(elem => {
-                  const tmp = elem.match(/['"][^ng,ui]([a-zA-Z0-9\s]).*?['"]/g);
+    _getResult(files) {
+        let result = [];
 
-                  if (tmp === null) {
-                    return;
-                  }
+        files.forEach((file) => {
+            const data = fs.readFileSync(file).toString().split('\n');
 
-                  tmp.forEach(elem => {
-                    const tmp = elem.match(/['"][A-Z]([a-zA-Z0-9\s]).*?['"]/g);
+            result = [ ...result, [ file, this._getStrings(data) ] ];
+        });
 
-                    if (tmp === null) {
-                      return;
-                    }
+        result = result.filter(elem => elem[1] !== undefined);
 
-                    arr.push(`${index+1}. ${tmp}`);
-                  });
-                });
-              });
+        return result;
+    }
 
-              if (!arr.length) {
+    _getStrings(data) {
+        let strings = [];
+
+        data.forEach((string, index) => {
+            if (string.indexOf('gettextCatalog.getString') !== -1) {
                 return;
-              }
+            }
 
-              fs.appendFileSync('report.txt', resolvePath, (err) => {
-                if (err) {
-                  throw err;
-                }
-              });
+            let matchString = [];
 
-              fs.appendFileSync('report.txt', `\n\t${arr.join(',\n\t')}\n`, (err) => {
-                if (err) {
-                  throw err;
-                }
-              });
+            this._options.matcher.filter(regex => {
+                matchString = string.match(regex);
             });
-          }
 
-          if (!--pending) {
-            return filesList;
-          }
+            if (matchString == null) {
+                return;
+            }
+
+            matchString.forEach(string => {
+                strings = [ ...strings, [ index, string ] ];
+            });
+        });
+
+        if (!strings.length) {
+            return;
         }
-      });
-    });
-  });
-};
 
-fs.readFile('report.txt', (err) => {
-  if (err) {
-    init(dir);
-
-    return;
-  }
-
-  fs.unlink('report.txt', (err) => {
-    if (err) {
-      throw err;
+        return strings;
     }
+}
 
-    console.log('File \'report.txt\' deleted successfully!');
-
-    init(dir);
-  });
-});
+module.exports = JsValidator;
