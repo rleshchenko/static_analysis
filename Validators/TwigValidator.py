@@ -5,7 +5,7 @@ import re
 class TwigValidator:
     """Validator for the angular 1.5 html templates."""
 
-    EXTENSIONS = ['html', 'twig']
+    EXTENSIONS = ['html', 'twig', 'tpl']
     folder = ''
 
     def init(self):
@@ -26,8 +26,8 @@ class TwigValidator:
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and len(re.findall('[\\n\\r]+', tag.text)) is 0
-                            and len(re.findall(r'({%\s*translate)|({%\s*lang)|({{\s*lang.)|({%\s*jslang)', tag.text)) is 0
-                            and len(re.findall(r'(\s*translate)|(\s*lang)|(\s*lang.)|(\s*jslang)', tag.text)) is 0
+                            and len(re.findall(r'({%\s*translate)', tag.text)) is 0
+                            and len(re.findall(r'(\s*translate)', tag.text)) is 0
                             and tag.text.find('translate') is -1
                             and tag.name not in ['style', 'script']
             )
