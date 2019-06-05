@@ -29,21 +29,21 @@ class JsValidator {
     _getFiles(dir) {
         const files = fs.readdirSync(dir, {
             encoding: 'utf8',
-            withFileTypes: true,
         });
 
         let filesArray = [];
 
         files.forEach((file) => {
-            const {name} = file;
-            const resolvePath = path.resolve(dir, name);
+            const resolvePath = path.resolve(dir, file);
             const stat = fs.statSync(resolvePath);
 
             if (stat && stat.isDirectory()) {
-                return filesArray = filesArray.concat(this._getFiles(resolvePath));
+                filesArray = filesArray.concat(this._getFiles(resolvePath));
+
+                return;
             }
 
-            if (this._checkFile(name)) {
+            if (this._checkFile(file)) {
                 filesArray.push(resolvePath);
             }
         });
@@ -57,9 +57,13 @@ class JsValidator {
      * @private
      */
     _checkFile(file) {
-        const result = this._options.extensions.filter((extension) => file.indexOf(extension) !== -1);
+        const result = this._options.extensions.indexOf(path.extname(file));
 
-        return Boolean(result.length);
+        if (file.indexOf('.spec') !== -1) {
+            return false;
+        }
+
+        return result !== -1;
     }
 
     /**
@@ -79,7 +83,7 @@ class JsValidator {
             ]);
         });
 
-        result = result.filter((elem) => elem[1] !== undefined);
+        result = result.filter((elem) => elem[1].length);
 
         return result;
     }
@@ -116,7 +120,7 @@ class JsValidator {
         });
 
         if (!strings.length) {
-            return;
+            return [];
         }
 
         return strings;

@@ -3,10 +3,10 @@ const url = require('url');
 const JsValidator = require('./JsValidator');
 
 http.createServer((request, response) => {
-    const folder = url.parse(request.url, true).query.folder;
+    const folders = url.parse(request.url, true).query.folders;
 
     const jsValidator = new JsValidator({
-        dir: folder,
+        dir: folders,
         extensions: ['.js', '.ts'],
         matcher: [
             /['"][^\s,$]([a-zA-Z0-9\s])(?!.*_).*?['"]/g,
