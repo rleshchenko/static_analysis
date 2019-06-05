@@ -16,6 +16,6 @@ http.createServer((request, response) => {
     });
 
     const data = jsValidator.init();
-
-    response.write(JSON.stringify(data));
+    response.writeHead(200, {'Content-Type': 'application/json; charset=utf-8'});
+    response.end(JSON.stringify(data));
 }).listen(8124, '127.0.0.1');

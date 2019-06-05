@@ -18,7 +18,7 @@ class JsValidator {
     init() {
         const files = this._getFiles(this._options.dir);
 
-        return this._getResult(files);
+        return [this._getResult(files)];
     }
 
     /**
