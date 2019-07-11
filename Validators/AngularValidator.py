@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup, NavigableString
+import HTMLParser
 
 
 class AngularValidator:
@@ -97,12 +98,19 @@ class AngularValidator:
 
     def numerateResults(self, filePath, searchResults):
         result = []
+        fileLinesNumber = sum(1 for line in open(filePath, 'r'))
         for searchResult in searchResults:
-            searchResult = str(searchResult)
+            searchResult = HTMLParser.HTMLParser().unescape(str(searchResult))
             with open(filePath) as file:
                 for num, line in enumerate(file, 1):
-                    if searchResult[0:searchResult.find('\n')] in line:
+                    if searchResult.find('\n') is not -1 and searchResult[0:searchResult.find('\n')] in line:
                         result.append([num, searchResult])
+                        break
+                    if searchResult in line:
+                        result.append([num, searchResult])
+                        break
+                    if num == fileLinesNumber:
+                        result.append(['??', searchResult])
 
         return result
 

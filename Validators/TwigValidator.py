@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
-import re
+from bs4 import BeautifulSoup, NavigableString
+import re, HTMLParser
 
 
 class TwigValidator:
@@ -25,8 +25,9 @@ class TwigValidator:
         if mode != 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
-                            and len(re.findall('[\\n\\r]+', tag.text)) is 0
-                            and len(re.findall(r'({%\s*translate)', tag.text)) is 0
+                            and tag.find(text=True, recursive=False) is not NavigableString
+                            and tag.find(text=True, recursive=False) is not '\n'
+                            and tag.find(text=True, recursive=False) is not None
                             and len(re.findall(r'(\s*translate)', tag.text)) is 0
                             and tag.text.find('translate') is -1
                             and tag.name not in ['style', 'script']
@@ -35,8 +36,8 @@ class TwigValidator:
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and len(re.findall('[\\n\\r]+', tag.text)) is 0
-                            and len(re.findall(r'({%\s*translate)|({%\s*lang)|({{\s*lang.)|({%\s*jslang)', tag.text)) is not -1
-                            and len(re.findall(r'(\s*translate)|(\s*lang)|(\s*lang.)|(\s*jslang)', tag.text)) is not -1
+                            and len(re.findall(r'({%\s*translate)', tag.text)) is not -1
+                            and len(re.findall(r'(\s*translate)', tag.text)) is not -1
                             and tag.text.find('translate') is not -1
                             and tag.name not in ['style', 'script']
             )
@@ -56,13 +57,19 @@ class TwigValidator:
 
     def numerateResults(self, filePath, searchResults):
         result = []
+        fileLinesNumber = sum(1 for line in open(filePath, 'r'))
         for searchResult in searchResults:
-            searchResult = str(searchResult)
-
+            searchResult = HTMLParser.HTMLParser().unescape(str(searchResult))
             with open(filePath) as file:
                 for num, line in enumerate(file, 1):
-                    if searchResult[0:searchResult.find('\n')] in line:
+                    if searchResult.find('\n') is not -1 and searchResult[0:searchResult.find('\n')] in line:
                         result.append([num, searchResult])
+                        break
+                    if searchResult in line:
+                        result.append([num, searchResult])
+                        break
+                    if num == fileLinesNumber:
+                        result.append(['??', searchResult])
 
         return result
 
