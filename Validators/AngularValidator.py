@@ -45,6 +45,7 @@ class AngularValidator:
             )
 
         filteredResults = self.filterHtmlElements(searchResults, mode)
+
         if filteredResults is None or len(filteredResults) is 0:
             return [linesLen, 0]
 

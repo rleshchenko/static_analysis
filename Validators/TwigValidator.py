@@ -35,9 +35,10 @@ class TwigValidator:
         if mode == 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
-                            and len(re.findall('[\\n\\r]+', tag.text)) is 0
-                            and len(re.findall(r'({%\s*translate)', tag.text)) is not -1
-                            and len(re.findall(r'(\s*translate)', tag.text)) is not -1
+                            and tag.find(text=True, recursive=False) is not NavigableString
+                            and tag.find(text=True, recursive=False) is not '\n'
+                            and tag.find(text=True, recursive=False) is not None
+                            and len(re.findall(r'(\s*translate)', tag.text)) is not 0
                             and tag.text.find('translate') is not -1
                             and tag.name not in ['style', 'script']
             )
@@ -50,7 +51,7 @@ class TwigValidator:
         if mode == 'count' or mode == 'reverse':
             return [
                 linesLen,
-                sum([(lambda item: 1+str(item).count('\n'))(item) for item in searchResults])
+                len(searchResults)
             ]
         if len(searchResults) is not 0:
             return self.numerateResults(filePath, searchResults)

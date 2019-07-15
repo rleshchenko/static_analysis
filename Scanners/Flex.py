@@ -106,10 +106,14 @@ class Flex:
         html_elements_count = 0
         for result in results:
             file.write(result[0] + ': \n')
+            if type(result[1][1]) is int:
+                continue
             for num, line in result[1]:
                 try:
                     file.write('\t' + str(num) + '\t' + line.encode('unicode-escape') + '\n')
                 except UnicodeDecodeError:
+                    continue
+                except IndexError:
                     continue
                 html_elements_count  += 1
 
