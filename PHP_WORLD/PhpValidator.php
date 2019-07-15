@@ -63,13 +63,11 @@ class PhpValidator
                 foreach ($data as $stringNumber => $stringValue) {
                     $arrayData[] = [$stringNumber, $stringValue];
                 }
-                if (!empty($data)) {
 
-                    $results[] = [
-                        $path,
-                        $arrayData,
-                    ];
-                }
+                $results[] = [
+                    $path,
+                    !empty($data) ? $arrayData : [],
+                ];
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
                 $this->getDirContents($path, $results);
             }
@@ -110,13 +108,10 @@ class PhpValidator
                 foreach ($data as $stringNumber => $stringValue) {
                     $arrayData[] = [$stringNumber, $stringValue];
                 }
-                if (!empty($data)) {
-
-                    $results[] = [
-                        $path,
-                        $arrayData,
-                    ];
-                }
+                $results[] = [
+                    $path,
+                    !empty($data) ? $arrayData : [],
+                ];
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
                 $this->getDirContentsReverse($path, $results);
             }
