@@ -20,7 +20,7 @@ class TwigValidator:
     def execute(self, filePath, mode=''):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
-
+        linesLen = len(open(filePath).readlines())
         soup = BeautifulSoup(fileContent, 'html.parser')
         if mode != 'reverse':
             searchResults = soup.find_all(
@@ -43,13 +43,13 @@ class TwigValidator:
             )
 
         if len(searchResults) is 0:
-            return
+            return [linesLen, 0]
 
         searchResults = self.__filter_html_elements(searchResults)
 
         if mode == 'count' or mode == 'reverse':
             return [
-                len(open(filePath).readlines()),
+                linesLen,
                 sum([(lambda item: 1+str(item).count('\n'))(item) for item in searchResults])
             ]
         if len(searchResults) is not 0:

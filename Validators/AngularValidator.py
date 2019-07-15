@@ -22,7 +22,7 @@ class AngularValidator:
         fileContent = self.getFileContent(filePath)
 
         soup = BeautifulSoup(fileContent, 'html.parser')
-
+        linesLen = len(open(filePath).readlines())
         if mode != 'reverse':
             searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
@@ -45,16 +45,12 @@ class AngularValidator:
             )
 
         filteredResults = self.filterHtmlElements(searchResults, mode)
-
-        if filteredResults is None:
-            return
-
-        if len(filteredResults) is 0:
-            return
+        if filteredResults is None or len(filteredResults) is 0:
+            return [linesLen, 0]
 
         if mode == 'count' or mode == 'reverse':
             return [
-                len(open(filePath).readlines()),
+                linesLen,
                 sum([(lambda item: 1 + str(item).count('\n'))(item) for item in filteredResults])
 
             ]
