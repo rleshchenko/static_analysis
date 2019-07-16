@@ -39,7 +39,7 @@ class PhpValidator:
                     entryObject.set_line_number(untranslated_item['line_number'])
                     entryObject.set_untranslated_line(untranslated_item['line_value'])
                     result_object.add_single_translate_entry(entryObject)
-                    
+
                 result_data.append(result_object)
 
         return result_data

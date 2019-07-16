@@ -1,7 +1,8 @@
 class DetailedResultObject:
 
-    untranslated_entires = []
-    file_path = ''
+    def __init__(self):
+        self.untranslated_entires = []
+        self.file_path = ''
 
     def get_translate_entries(self):
         return self.untranslated_entires
@@ -20,15 +21,16 @@ class DetailedResultObject:
             entry.set_untranslated_line(untranslated_line)
             self.untranslated_entires.append(entry)
 
-    def add_single_translate_entry(self, entry):
+    def add_single_translate_entry(self, entry = None):
         self.untranslated_entires.append(entry)
         return self
 
 
 class DetailedResultEntryObject:
 
-    line_number = 0
-    untranslated_line = ''
+    def __init__(self):
+        self.line_number = 0
+        self.untranslated_line = ''
 
     def set_line_number(self, num):
         self.line_number = num
