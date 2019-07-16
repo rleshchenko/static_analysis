@@ -71,5 +71,5 @@ class StatsResultObject:
     def get_translated_count(self):
         return self.translated_count
     
-    def get_untranslated_count(self, num):
+    def get_untranslated_count(self):
         return self.untranslated_count    

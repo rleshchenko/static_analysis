@@ -1,5 +1,6 @@
 import os, fnmatch, importlib, glob
-
+import sys
+from Dto.ResultObject import DetailedResultObject
 
 class Detailed:
     mode = 'detailed'
@@ -29,11 +30,12 @@ class Detailed:
             if hasattr(validator, 'folder') and validator.folder is not '':
                 files = self.__get_files_for_validator(validator.folder, validator.EXTENSIONS)
                 for filePath in files:
-                    result = self.__get_dto()
+                    result = DetailedResultObject()
                     result = validator.execute(filePath, self.mode, result)
                     if len(result.untranslated_entires) is not 0:
                         result.set_file_path(filePath)
                         results.append(result)
+                        del result
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
                 results += validator.execute(self.mode)
@@ -63,7 +65,7 @@ class Detailed:
         class_name = getattr(module, dto_type + 'ResultObject')
         os.chdir('../')
 
-        return class_name()
+        return class_name
 
     def __get_files_for_validator(self, folder_name, file_extensions):
         """Returns file list depends on given extension """

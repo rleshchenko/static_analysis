@@ -24,12 +24,12 @@ class AngularValidator:
 
         soup = BeautifulSoup(fileContent, 'html.parser')
         searchResults = soup.find_all(
-                lambda tag: len(tag.text) is not 0
-                            and tag.find(text=True, recursive=False) is not NavigableString
-                            and tag.find(text=True, recursive=False) is not '\n'
-                            and tag.find(text=True, recursive=False) is not None
-                            and 'translate' not in tag.attrs
-                            and tag.translate is not ""
+            lambda tag: len(tag.text) is not 0
+                        and tag.find(text=True, recursive=False) is not NavigableString
+                        and tag.find(text=True, recursive=False) is not '\n'
+                        and tag.find(text=True, recursive=False) is not None
+                        and 'translate' not in tag.attrs
+                        and tag.translate is not ""
 
         )
 
@@ -44,8 +44,14 @@ class AngularValidator:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
                 continue
             else:
-                if len(element.find(text=True, recursive=False).strip()) is 0:
+                if len(element.text.strip()) is 0:
                     continue
+                if element.text.find('ctrl', 0, -1) != -1:
+                    continue
+                if len(element.text) == 1:
+                    continue
+                if self.checkParentObject(element):
+                    filteredResults.append(element)
 
         return filteredResults
 
