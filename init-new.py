@@ -1,4 +1,4 @@
-import os, importlib, argparse, glob
+import os, importlib, argparse, glob, sys
 
 
 class Initialize:
@@ -25,7 +25,8 @@ class Initialize:
         for moduleItem in module_list:
             if moduleItem.find("init") is not -1 or moduleItem.find("pyc") is not -1:
                 continue
-            os.chdir('Scanners')
+            os.chdir('./Scanners')
+            sys.path.insert(0, './')
             module = importlib.import_module('Scanners.' + moduleItem[0:-3])
             class_name = getattr(module, moduleItem[0:-3])
             os.chdir('../')
@@ -71,9 +72,8 @@ class Initialize:
             if scaner.__class__.__name__ == scanner_type:
                 return scaner
 
-        print 'There is no such a scanner. Proceeding with detailed'
+        print ('There is no such a scanner. Proceeding with detailed')
         return self.scanners[1]
-
 
 
 Initialize().execute()
