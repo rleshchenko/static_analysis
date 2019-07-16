@@ -7,6 +7,6 @@ class Detailed:
             for translate_entry in processed_file.get_translate_entries():
                 line = '\t' + str(translate_entry.get_line_number()) + '\t' + translate_entry.get_untranslated_line().encode('unicode-escape') + '\n'
                 preparedResult.append(line)
-            preparedResult.append('/n')
+            preparedResult.append('\n')
         return preparedResult
 
