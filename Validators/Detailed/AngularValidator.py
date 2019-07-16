@@ -108,7 +108,7 @@ class AngularValidator:
                         result.append([num, searchResult])
                         break
                     if searchResult in line:
-                        result.append([num, searchResult])
+                        result.append([ rchResult])
                         break
                     if num == fileLinesNumber:
                         result.append(['??', searchResult])

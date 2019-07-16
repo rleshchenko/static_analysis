@@ -15,6 +15,11 @@ class Detailed:
             print '\nProcess interrupted from the keyboard'
             return
 
+<<<<<<< HEAD
+=======
+        
+        result_strings = {''} 
+>>>>>>> Update data transfer object
         if write_report == '1':
             return  # ReportFile().execute(results)
 
