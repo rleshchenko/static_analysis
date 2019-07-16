@@ -12,3 +12,6 @@ $ python init.py -mode
  - reverse - indicate how many lines have been already translated  
  - full - indicate lines that need to be translated
  - flex - 
+
+ - detailed - for detailed response with line numbers and filepath 
+ - stats - just for overall count of translated/untranslated strings

@@ -30,16 +30,3 @@ class Full(Flex):
             whole_string_count,
             untranslated_string_count
         ]
-
-    def print_results(self, results):
-        """Renders result in the console"""
-        print ('Total strings count: ' + str(results[0]) + ' \n')
-        print ('Untranslated strings count: ' + str(results[1]) + ' \n')
-
-    def write_results(self, results):
-        """Renders result to the file"""
-        file = open('report.txt', 'w')
-        file.write('Total strings count: ' + str(results[0]) + ' \n')
-
-        file.write('Untranslated strings count: ' + str(results[1]) + ' \n')
-        file.close()
