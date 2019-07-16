@@ -1,6 +1,5 @@
 import os, fnmatch, glob, importlib
 
-
 class Detailed:
     mode = 'detailed'
     """Main entrypoint class for the static code analysis"""
@@ -15,11 +14,6 @@ class Detailed:
             print '\nProcess interrupted from the keyboard'
             return
 
-<<<<<<< HEAD
-=======
-        
-        result_strings = {''} 
->>>>>>> Update data transfer object
         if write_report == '1':
             return  # ReportFile().execute(results)
 
@@ -62,8 +56,8 @@ class Detailed:
     def __import_dto(self):
         os.chdir('Dto')
         dto_type = self.mode.capitalize()
-        module = importlib.import_module(dto_type)
-        class_name = getattr(module, dto_type)
+        module = importlib.import_module('ResultObject')
+        class_name = getattr(module, dto_type + 'ResultObject')
 
         return class_name()
 
