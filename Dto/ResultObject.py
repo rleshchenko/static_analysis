@@ -1,13 +1,23 @@
 
 class DetailedResultObject:
 
-    untanslated_files = []
+    untranslated_entires = []
+    file_path = ''
 
     def get_translate_entries(self):
-        return self.untanslated_files
+        return self.untranslated_entires
 
-    def add_translate_entry(self, entry):
-        self.untanslated_files.append(entry)
+    def set_file_path(self, file_path):
+        self.file_path = file_path
+        return self
+
+    def add_translate_entry(self, strings_array):
+        for line_number, untranslated_line in strings_array:
+            entry = DetailedResultEntryObject()
+            entry.set_line_number(line_number)
+            entry.set_untranslated_line(untranslated_line)
+            self.untranslated_entires.append(entry)
+
 
 class DetailedResultEntryObject:
 

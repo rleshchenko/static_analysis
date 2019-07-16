@@ -18,14 +18,12 @@ class AngularValidator:
             data = theFile.read()
             return data
 
-    def execute(self, filePath, mode=''):
+    def execute(self, filePath, mode, result):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
 
         soup = BeautifulSoup(fileContent, 'html.parser')
-        linesLen = len(open(filePath).readlines())
-        if mode != 'reverse':
-            searchResults = soup.find_all(
+        searchResults = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and tag.find(text=True, recursive=False) is not NavigableString
                             and tag.find(text=True, recursive=False) is not '\n'
@@ -33,49 +31,20 @@ class AngularValidator:
                             and 'translate' not in tag.attrs
                             and tag.translate is not ""
 
-            )
-
-        if mode == 'reverse':
-            searchResults = soup.find_all(
-                lambda tag: len(tag.text) is not 0
-                            and tag.find(text=True, recursive=False) is not NavigableString
-                            and tag.find(text=True, recursive=False) is not '\n'
-                            and tag.find(text=True, recursive=False) is not None
-                            and 'translate' in tag.attrs
-                            and tag.text.find('translate') is not -1
-
-            )
+        )
 
         filteredResults = self.filterHtmlElements(searchResults, mode)
-
-        if mode != 'flex' and (filteredResults is None or len(filteredResults) is 0):
-            return [linesLen, 0]
-
-        if mode == 'flex' and (filteredResults is None or len(filteredResults) is 0):
-            return
-
-        if mode == 'count' or mode == 'reverse':
-            return [
-                linesLen,
-                len(searchResults)
-
-            ]
-
-        return self.numerateResults(filePath, filteredResults)
+        if len(filteredResults) != 0:
+            result.add_translate_entry(self.numerateResults(filePath, filteredResults))
+        return result
 
     def filterHtmlElements(self, htmlElements, mode):
         filteredResults = []
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
-                if mode == 'reverse':
-                    filteredResults.append(element)
                 continue
             else:
                 if len(element.find(text=True, recursive=False).strip()) is 0:
-                    continue
-
-                if self.checkParentObject(element) and mode != 'reverse':
-                    filteredResults.append(element)
                     continue
 
         return filteredResults
@@ -108,7 +77,7 @@ class AngularValidator:
                         result.append([num, searchResult])
                         break
                     if searchResult in line:
-                        result.append([ rchResult])
+                        result.append([num, searchResult])
                         break
                     if num == fileLinesNumber:
                         result.append(['??', searchResult])
