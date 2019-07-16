@@ -62,4 +62,35 @@ class Detailed:
         return class_name()
 
     def _get_files_for_validator(self, folder_name, file_extensions):
-        pass
+        """Returns file list depends on given extension """
+        files = []
+
+        if isinstance(file_extensions, str):
+            file_extensions = [file_extensions]
+
+        for fileExtension in file_extensions:
+            for root, dirnames, filenames in os.walk(folder_name):
+                if any(prohibitedFolderName in root for prohibitedFolderName in [
+                    'dist',
+                    'node_modules',
+                    'tests',
+                    'git',
+                    'bower_components'
+                ]):
+                    continue
+                for filename in fnmatch.filter(filenames, '*.' + fileExtension):
+                    if any(prohibited in filename for prohibited in [
+                        'eslint',
+                        'jest',
+                        'gulpfile',
+                        'min',
+                        'module',
+                        '.directive.'
+                        'mock',
+                        'config'
+                    ]):
+                        continue
+
+                    files.append(os.path.join(root, filename))
+
+        return files
