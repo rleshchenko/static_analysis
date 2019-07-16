@@ -1,4 +1,3 @@
-
 class DetailedResultObject:
 
     untranslated_entires = []
@@ -20,6 +19,10 @@ class DetailedResultObject:
             entry.set_line_number(line_number)
             entry.set_untranslated_line(untranslated_line)
             self.untranslated_entires.append(entry)
+
+    def add_single_translate_entry(self, entry):
+        self.untranslated_entires.append(entry)
+        return self
 
 
 class DetailedResultEntryObject:

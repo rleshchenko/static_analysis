@@ -3,7 +3,7 @@ import json
 import subprocess
 import os
 import signal
-
+from Dto.ResultObject import DetailedResultObject, DetailedResultEntryObject
 
 class PhpValidator:
     """Validator for the angular 1.5 html templates."""
@@ -13,7 +13,7 @@ class PhpValidator:
 
     def __init__(self):
         self.process = subprocess.Popen(
-            ['php -S ' + self.url + ' -t ../PHP_WORLD/'],
+            ['php -S ' + self.url + ' -t ../../PHP_WORLD/'],
             shell=True,
             stdout=open(os.devnull, 'wb'),
             stderr=open(os.devnull, 'wb'),
@@ -22,13 +22,28 @@ class PhpValidator:
     def init(self):
         self.folders = raw_input('Please insert php folders, comma separated:')
 
-    def execute(self, mode=''):
+    def execute(self, mode):
+        result_data = []
         if len(self.folders) is not 0 and len(self.url) is not 0:
             requestUrl = self.__build_url(mode)
             response = requests.get(requestUrl)
             if response.status_code == 200:
                 response = json.loads(response.text)
-            return response[0]
+            if len(response) == 0:
+                return result_data
+            for parsed_file in response: 
+                result_object = DetailedResultObject()
+                result_object.set_file_path(parsed_file['file_path'])
+                for untranslated_item in parsed_file['untranslated_entries']:
+                    entryObject = DetailedResultEntryObject()
+                    entryObject.set_line_number(untranslated_item['line_number'])
+                    entryObject.set_untranslated_line(untranslated_item['line_value'])
+                    result_object.add_single_translate_entry(entryObject)
+                    
+                result_data.append(result_object)
+
+        return result_data
+
 
     def __del__(self):
         import os, signal

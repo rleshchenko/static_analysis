@@ -21,7 +21,7 @@ class PhpValidator
                 }
             } catch (Throwable $e) {
             } finally {
-                echo json_encode([$result]);
+                echo json_encode($result);
             }
         }
     }
@@ -61,13 +61,18 @@ class PhpValidator
                 $data = preg_grep("/((['\"]).[a-z]*)([A-Z]*?)([A-Z][a-z]+)/", $data, PREG_GREP_INVERT); // camelCase with '
 
                 foreach ($data as $stringNumber => $stringValue) {
-                    $arrayData[] = [$stringNumber, $stringValue];
+                    $arrayData[] = [
+                        'line_number' => $stringNumber, 
+                        'line_value'  => $stringValue
+                    ];
+                }
+                if (!empty($data)) {
+                    $results[] = [
+                        'file_path' => $path, 
+                        'untranslated_entries' => $arrayData
+                    ];
                 }
 
-                $results[] = [
-                    $path,
-                    !empty($data) ? $arrayData : [],
-                ];
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
                 $this->getDirContents($path, $results);
             }

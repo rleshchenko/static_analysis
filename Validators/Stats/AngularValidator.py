@@ -58,19 +58,55 @@ class AngularValidator:
             return [
                 linesLen,
                 len(searchResults)
-
             ]
 
         return self.numerateResults(filePath, filteredResults)
 
     def filterHtmlElements(self, htmlElements, mode):
-        pass
+        filteredResults = []
+        for element in htmlElements:
+            if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
+                continue
+            else:
+                if len(element.find(text=True, recursive=False).strip()) is 0:
+                    continue
+
+        return filteredResults
 
     def checkParentObject(self, element):
-        pass
+        parentElement = element.parent
+        childCount = 0
+        for child in list(parentElement.children):
+            if isinstance(child, NavigableString):
+                continue
+            else:
+                childCount += 1
+
+        if 'translate' in parentElement.attrs and childCount > 1:
+            return True
+
+        if 'translate' not in parentElement.attrs:
+            return True
+
+        return False
 
     def numerateResults(self, filePath, searchResults):
-        pass
+        result = []
+        fileLinesNumber = sum(1 for line in open(filePath, 'r'))
+        for searchResult in searchResults:
+            searchResult = HTMLParser.HTMLParser().unescape(str(searchResult))
+            with open(filePath) as file:
+                for num, line in enumerate(file, 1):
+                    if searchResult.find('\n') is not -1 and searchResult[0:searchResult.find('\n')] in line:
+                        result.append([num, searchResult])
+                        break
+                    if searchResult in line:
+                        result.append([num, searchResult])
+                        break
+                    if num == fileLinesNumber:
+                        result.append(['??', searchResult])
 
+        return result
+        
     def getFolder(self):
-        pass
+        return self.folder

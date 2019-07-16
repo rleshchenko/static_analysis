@@ -35,6 +35,7 @@ class TwigValidator:
 
         if len(searchResults) is not 0:
             numeratedResults = self.numerateResults(filePath, searchResults)
+            result.set_file_path(filePath)
             result.add_translate_entry(numeratedResults)
 
         return result
