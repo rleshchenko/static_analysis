@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup, NavigableString
 import HTMLParser
+import re
 
 
 class AngularValidator:
@@ -41,18 +42,22 @@ class AngularValidator:
                             and tag.find(text=True, recursive=False) is not '\n'
                             and tag.find(text=True, recursive=False) is not None
                             and 'translate' in tag.attrs
+                            and tag.text.find('translate') is not -1
 
             )
 
         filteredResults = self.filterHtmlElements(searchResults, mode)
 
-        if filteredResults is None or len(filteredResults) is 0:
+        if mode != 'flex' and (filteredResults is None or len(filteredResults) is 0):
             return [linesLen, 0]
+
+        if mode == 'flex' and (filteredResults is None or len(filteredResults) is 0):
+            return
 
         if mode == 'count' or mode == 'reverse':
             return [
                 linesLen,
-                sum([(lambda item: 1 + str(item).count('\n'))(item) for item in filteredResults])
+                len(searchResults)
 
             ]
 
@@ -61,8 +66,7 @@ class AngularValidator:
     def filterHtmlElements(self, htmlElements, mode):
         filteredResults = []
         for element in htmlElements:
-            if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1 \
-                    or element.text.find('{{ ::', 0, -1) != -1:
+            if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
                 if mode == 'reverse':
                     filteredResults.append(element)
                 continue

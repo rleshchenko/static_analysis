@@ -43,7 +43,10 @@ class TwigValidator:
                             and tag.name not in ['style', 'script']
             )
 
-        if len(searchResults) is 0:
+        if len(searchResults) is 0 and mode == 'flex':
+            return
+
+        if len(searchResults) is 0 and mode != 'flex':
             return [linesLen, 0]
 
         searchResults = self.__filter_html_elements(searchResults)
