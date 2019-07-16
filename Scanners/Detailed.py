@@ -16,6 +16,7 @@ class Detailed:
         except KeyboardInterrupt:
             print '\nProcess interrupted from the keyboard'
             return
+        
 
         if write_report == '1':
             return self._renderers['ReportFile'].execute(results, self.mode)

@@ -6,10 +6,11 @@ class ReportFile:
     """Renders result in the console"""
 
     def execute(self, results, mode):
+        file = open('report.txt', 'w')
         self.processor = self.get_processor(mode)
-        for item in results:
-            print ('Total strings count: ' + str(results[0]) + ' \n')
-            print ('Untranslated strings count: ' + str(results[1]) + ' \n')
+        output_content = self.processor.execute(results)
+        for item in output_content:
+            file.write(item)
 
     def get_processor(self, mode):
         os.chdir('Output')

@@ -11,6 +11,9 @@ class DetailedResultObject:
         self.file_path = file_path
         return self
 
+    def get_file_path(self):
+        return self.file_path
+
     def add_translate_entry(self, strings_array):
         for line_number, untranslated_line in strings_array:
             entry = DetailedResultEntryObject()
@@ -31,6 +34,12 @@ class DetailedResultEntryObject:
     def set_untranslated_line(self, line):
         self.untranslated_line = line
         return self
+
+    def get_line_number(self):
+        return self.line_number     
+
+    def get_untranslated_line(self):
+        return self.untranslated_line
 
 class StatsResultObject:
 
