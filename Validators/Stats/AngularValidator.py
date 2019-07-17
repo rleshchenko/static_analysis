@@ -42,8 +42,58 @@ class AngularValidator:
 
         )
 
+        translated_elements = self.filterTranslatedHtmlElements(translated_elements)
+        untranslated_elements = self.filterUntranslatedHtmlElements(untranslated_elements)
+
         result.set_total_count(result.get_total_count() + linesLen)
         result.set_translated_count(result.get_translated_count() + len(translated_elements))
         result.set_untranslated_count(result.get_untranslated_count() + len(untranslated_elements))
 
         return result
+
+    def checkParentObject(self, element):
+        parentElement = element.parent
+        childCount = 0
+        for child in list(parentElement.children):
+            if isinstance(child, NavigableString):
+                continue
+            else:
+                childCount += 1
+
+        if 'translate' in parentElement.attrs and childCount > 1:
+            return True
+
+        if 'translate' not in parentElement.attrs:
+            return True
+
+        return False
+
+    def filterUntranslatedHtmlElements(self, htmlElements):
+        filteredResults = []
+        for element in htmlElements:
+            if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
+                continue
+            else:
+                if len(element.find(text=True, recursive=False).strip()) is 0:
+                    continue
+
+                if self.checkParentObject(element):
+                    filteredResults.append(element)
+                    continue
+
+        return filteredResults
+
+    def filterTranslatedHtmlElements(self, htmlElements):
+        filteredResults = []
+        for element in htmlElements:
+            if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
+                filteredResults.append(element)
+                continue
+            else:
+                if len(element.find(text=True, recursive=False).strip()) is 0:
+                    continue
+
+                if self.checkParentObject(element):
+                    continue
+
+        return filteredResults

@@ -65,7 +65,9 @@ class TwigValidator:
                 continue
             if element.text.find('function(') is not -1 or element.text.find('<script') is not -1:
                 continue
-            filtered_results.append(element)
+            if len(element.text.strip()) is 0:
+                continue
+            filtered_results.append(element.text.strip())
 
         return filtered_results
 

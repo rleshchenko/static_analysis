@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup, NavigableString, sys
 import HTMLParser
 import re
 
@@ -29,7 +29,8 @@ class AngularValidator:
                         and tag.find(text=True, recursive=False) is not '\n'
                         and tag.find(text=True, recursive=False) is not None
                         and 'translate' not in tag.attrs
-                        and tag.translate is not ""
+                        and (tag.translate is not ""
+                             or tag.text.find('translate') is not -1)
 
         )
 
@@ -42,16 +43,14 @@ class AngularValidator:
         filteredResults = []
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
-                continue
+                    continue
             else:
-                if len(element.text.strip()) is 0:
+                if len(element.find(text=True, recursive=False).strip()) is 0:
                     continue
-                if element.text.find('ctrl', 0, -1) != -1:
-                    continue
-                if len(element.text) == 1:
-                    continue
+
                 if self.checkParentObject(element):
                     filteredResults.append(element)
+                    continue
 
         return filteredResults
 
@@ -74,6 +73,8 @@ class AngularValidator:
 
     def numerateResults(self, filePath, searchResults):
         result = []
+        reload(sys)
+        sys.setdefaultencoding('utf8')
         fileLinesNumber = sum(1 for line in open(filePath, 'r'))
         for searchResult in searchResults:
             searchResult = HTMLParser.HTMLParser().unescape(str(searchResult))

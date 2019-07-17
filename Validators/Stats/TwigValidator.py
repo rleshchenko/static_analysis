@@ -17,13 +17,12 @@ class TwigValidator:
             data = theFile.read().decode('utf-8')
             return data
 
-    def execute(self, filePath, mode=''):
+    def execute(self, filePath, mode, result):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
         linesLen = len(open(filePath).readlines())
         soup = BeautifulSoup(fileContent, 'html.parser')
-        if mode != 'reverse':
-            searchResults = soup.find_all(
+        untranslated_elements = soup.find_all(
                 lambda tag: len(tag.text) is not 0
                             and tag.find(text=True, recursive=False) is not NavigableString
                             and tag.find(text=True, recursive=False) is not '\n'
@@ -32,22 +31,17 @@ class TwigValidator:
                             and tag.text.find('translate') is -1
                             and tag.name not in ['style', 'script']
             )
-        if mode == 'reverse':
-            searchResults = soup.find_all(
-                lambda tag: len(tag.text) is not 0
-                            and tag.find(text=True, recursive=False) is not NavigableString
-                            and tag.find(text=True, recursive=False) is not '\n'
-                            and tag.find(text=True, recursive=False) is not None
-                            and len(re.findall(r'(\s*translate)', tag.text)) is not 0
-                            and tag.text.find('translate') is not -1
-                            and tag.name not in ['style', 'script']
-            )
 
-        if len(searchResults) is 0 and mode == 'flex':
-            return
+        translated_elements = soup.find_all(
+            lambda tag: len(tag.text) is not 0
+                        and tag.find(text=True, recursive=False) is not NavigableString
+                        and tag.find(text=True, recursive=False) is not '\n'
+                        and tag.find(text=True, recursive=False) is not None
+                        and len(re.findall(r'(\s*translate)', tag.text)) is not 0
+                        and tag.text.find('translate') is not -1
+                        and tag.name not in ['style', 'script']
+        )
 
-        if len(searchResults) is 0 and mode != 'flex':
-            return [linesLen, 0]
 
         searchResults = self.__filter_html_elements(searchResults)
 
