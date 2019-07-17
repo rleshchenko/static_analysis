@@ -17,7 +17,7 @@ class TwigValidator:
             data = theFile.read().decode('utf-8')
             return data
 
-    def execute(self, filePath, mode, result):
+    def execute(self, filePath, result):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
         linesLen = len(open(filePath).readlines())
@@ -43,15 +43,14 @@ class TwigValidator:
         )
 
 
-        searchResults = self.__filter_html_elements(searchResults)
+        untranslated_elements = self.__filter_html_elements(untranslated_elements)
+        translated_elements = self.__filter_html_elements(translated_elements)
 
-        if mode == 'count' or mode == 'reverse':
-            return [
-                linesLen,
-                len(searchResults)
-            ]
-        if len(searchResults) is not 0:
-            return self.numerateResults(filePath, searchResults)
+        result.set_total_count(result.get_total_count() + linesLen)
+        result.set_translated_count(result.get_translated_count() + len(translated_elements))
+        result.set_untranslated_count(result.get_untranslated_count() + len(untranslated_elements))
+
+        return result
 
     def numerateResults(self, filePath, searchResults):
         result = []
@@ -78,7 +77,9 @@ class TwigValidator:
                 continue
             if element.text.find('function(') is not -1 or element.text.find('<script') is not -1:
                 continue
-            filtered_results.append(element)
+            if len(element.text.strip()) is 0:
+                continue
+            filtered_results.append(element.text.strip())
 
         return filtered_results
 
