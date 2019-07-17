@@ -43,7 +43,7 @@ class PhpValidator:
 
                 result_data.append(result_object)
 
-        os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
+       ## os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
 
         return result_data
 

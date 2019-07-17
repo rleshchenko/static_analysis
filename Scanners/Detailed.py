@@ -38,7 +38,7 @@ class Detailed:
                         results.append(result)
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
-                results += validator.execute(self.mode, result)
+                results += validator.execute(self.mode)
 
         return results
 
