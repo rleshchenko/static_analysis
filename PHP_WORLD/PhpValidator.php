@@ -5,6 +5,9 @@
  */
 class PhpValidator
 {
+
+    const STATS_MODE = 'stats';
+
     public function execute()
     {
         $params = $_GET;
@@ -16,7 +19,7 @@ class PhpValidator
                 foreach ($folders as $folder) {
                     $result = $this->aggregateResult($result, $folder, $params['mode']);
                 }
-                if ($params['mode'] === 'reverse' || $params['mode'] === 'count') {
+                if ($params['mode'] === static::STATS_MODE) {
                     $result = $this->getResultStringsCount($result);
                 }
             } catch (Throwable $e) {
@@ -62,13 +65,13 @@ class PhpValidator
 
                 foreach ($data as $stringNumber => $stringValue) {
                     $arrayData[] = [
-                        'line_number' => $stringNumber, 
+                        'line_number' => $stringNumber,
                         'line_value'  => $stringValue
                     ];
                 }
                 if (!empty($data)) {
                     $results[] = [
-                        'file_path' => $path, 
+                        'file_path' => $path,
                         'untranslated_entries' => $arrayData
                     ];
                 }
@@ -111,7 +114,10 @@ class PhpValidator
                 );
 
                 foreach ($data as $stringNumber => $stringValue) {
-                    $arrayData[] = [$stringNumber, $stringValue];
+                    $arrayData[] = [
+                        'line_number' => $stringNumber,
+                        'line_value' => $stringValue
+                    ];
                 }
                 $results[] = [
                     $path,
@@ -136,13 +142,13 @@ class PhpValidator
         $untranslatedStrings = 0;
 
         foreach ($result as $item) {
-            $wholeStringsInFile += count(file($item[0])) + 1;
-            $untranslatedStrings += count($item[1]);
+            $wholeStringsInFile += count(file($item['file_path'])) + 1;
+            $untranslatedStrings += count($item['untranslated_entries']);
         }
 
         return [
-            $wholeStringsInFile,
-            $untranslatedStrings,
+            'total_strings_count' => $wholeStringsInFile,
+            'untranslated_entries_count' => $untranslatedStrings
         ];
     }
 
@@ -155,18 +161,14 @@ class PhpValidator
      */
     private function aggregateResult(array $result, string $folder, string $mode): array
     {
-        if ($mode === 'reverse') {
-            if (empty($result)) {
-                return $this->getDirContentsReverse($folder);
-            }
-            $data = $this->getDirContentsReverse($folder);
-        } else {
-            if (empty($result)) {
-                return $this->getDirContents($folder);
-            }
-            $data = $this->getDirContents($folder);
-        }
 
+        if (empty($result)) {
+            return $this->getDirContents($folder);
+        }
+        $untranslatedResults = $this->getDirContents($folder);
+        if ($mode === static::STATS_MODE) {
+            $translatedFields = $this->getDirContentsReverse($folder);
+        }
         return array_merge($result, $data);
     }
 }

@@ -5,3 +5,4 @@ class Stats:
             'Total translated phrases count:' + str(results.get_translated_count()) + '\n',
             'Total untranslated elements count:' + str(results.get_untranslated_count()) + '\n'
         ]
+

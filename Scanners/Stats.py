@@ -31,7 +31,7 @@ class Stats:
                     result = validator.execute(filePath, result)
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
-                result = (validator.execute(result))
+                result += (validator.execute(self.mode))
 
         return result
 

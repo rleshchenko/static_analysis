@@ -3,6 +3,7 @@ import json
 import subprocess
 import os
 import signal
+from Dto.ResultObject import StatsResultObject
 
 
 class PhpValidator:
@@ -13,7 +14,7 @@ class PhpValidator:
 
     def __init__(self):
         self.process = subprocess.Popen(
-            ['php -S ' + self.url + ' -t ../PHP_WORLD/'],
+            ['php -S ' + self.url + ' -t ../../PHP_WORLD/'],
             shell=True,
             stdout=open(os.devnull, 'wb'),
             stderr=open(os.devnull, 'wb'),
@@ -26,9 +27,15 @@ class PhpValidator:
         if len(self.folders) is not 0 and len(self.url) is not 0:
             requestUrl = self.__build_url(mode)
             response = requests.get(requestUrl)
+            entryObject = StatsResultObject()
+
             if response.status_code == 200:
                 response = json.loads(response.text)
-            return response[0]
+
+                entryObject.set_total_count(response['total_strings_count'])
+                entryObject.set_untranslated_count(response['untranslated_entries_count'])
+
+            return entryObject
 
     def __del__(self):
         import os, signal
