@@ -30,11 +30,19 @@ class Stats:
             if hasattr(validator, 'folder') and validator.folder is not '':
                 files = self.__get_files_for_validator(validator.folder, validator.EXTENSIONS)
                 for filePath in files:
-                    result = validator.execute(filePath, result)
+                    validatorResult = validator.execute(filePath, result)
+                    result = self.merge_total_result(result, validatorResult)
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
-                result += (validator.execute(self.mode))
+                validatorResult = validator.execute(self.mode)
+                result = self.merge_total_result(result, validatorResult)
 
+        return result
+
+    def merge_total_result(self, result, validator_result):
+        result.set_total_count(result.get_total_count() + validator_result.get_total_count())
+        result.set_translated_count(result.get_translated_count() + validator_result.get_translated_count())
+        result.set_untranslated_count(result.get_untranslated_count() + validator_result.get_untranslated_count())
         return result
 
     def __import_validators(self):

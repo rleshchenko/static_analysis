@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup, NavigableString
+from Dto.ResultObject import StatsResultObject
 
 
 class AngularValidator:
@@ -16,7 +17,8 @@ class AngularValidator:
             data = theFile.read()
             return data
 
-    def execute(self, filePath, result):
+    def execute(self, filePath):
+        result = StatsResultObject()
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
 
@@ -45,9 +47,9 @@ class AngularValidator:
         translated_elements = self.filterTranslatedHtmlElements(translated_elements)
         untranslated_elements = self.filterUntranslatedHtmlElements(untranslated_elements)
 
-        result.set_total_count(result.get_total_count() + linesLen)
-        result.set_translated_count(result.get_translated_count() + len(translated_elements))
-        result.set_untranslated_count(result.get_untranslated_count() + len(untranslated_elements))
+        result.set_total_count(linesLen)
+        result.set_translated_count(len(translated_elements))
+        result.set_untranslated_count(len(untranslated_elements))
 
         return result
 

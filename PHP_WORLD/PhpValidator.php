@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * TODO move logic to python
  * Class PhpValidator
  */
 class PhpValidator
@@ -11,31 +12,68 @@ class PhpValidator
     public function execute()
     {
         $params = $_GET;
-        $result = [];
         if (isset($params['folders'])) {
             $folders = explode(',', $params['folders']);
 
             try {
-                foreach ($folders as $folder) {
-                    $result = $this->aggregateResult($result, $folder, $params['mode']);
+                if ($params['mode'] != static::STATS_MODE) {
+                    $result = $this->getUntranslatedReport($folders);
+                } else {
+                    $result = $this->prepareStatsReport($folders);
                 }
+                echo json_encode($result);
 
             } catch (Throwable $e) {
-            } finally {
-                echo json_encode($result);
+                echo $e->getMessage();
             }
         }
     }
 
+    private function prepareStatsReport($folders)
+    {
+        $translatedReport = $this->getTranslatedReport($folders);
+        $untranslatedReport = $this->getUntranslatedReport($folders);
+        return [
+            'total_strings_count'        => $untranslatedReport['stats']['total_strings_count'],
+            'untranslated_entries_count' => $untranslatedReport['stats']['entries_count'],
+            'translated_entries_count'   => $translatedReport['stats']['entries_count']
+        ];
 
-    
+    }
+
+    private function getTranslatedReport($folders)
+    {
+        $results = [];
+        foreach ($folders as $folder) {
+            $results = $this->getDirContentsTranslated($folder, $results);
+        }
+        $stats = $this->getResultStringsCount($results);
+        return [
+            'stats' => $stats,
+            'report' => $results
+        ];
+    }
+
+    private function getUntranslatedReport(array $folders)
+    {
+        $results = [];
+        foreach ($folders as $folder) {
+            $results = $this->getDirContentsUntranslated($folder, $results);
+        }
+        $stats = $this->getResultStringsCount($results);
+        return [
+            'stats' => $stats,
+            'report' => $results
+        ];
+    }
+
     /**
      * @param string $dir
      * @param array  $results
      *
      * @return array
      */
-    private function getDirContents(string $dir, &$results = []): array
+    private function getDirContentsUntranslated(string $dir, &$results = []): array
     {
         $files = [];
         $arrayData = [];
@@ -72,12 +110,12 @@ class PhpValidator
                 if (!empty($data)) {
                     $results[] = [
                         'file_path' => $path,
-                        'untranslated_entries' => $arrayData
+                        'entries' => $arrayData
                     ];
                 }
 
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
-                $this->getDirContents($path, $results);
+                $this->getDirContentsUntranslated($path, $results);
             }
         }
 
@@ -90,7 +128,7 @@ class PhpValidator
      *
      * @return array
      */
-    private function getDirContentsReverse(string $dir, &$results = []): array
+    private function getDirContentsTranslated(string $dir, &$results = []): array
     {
         $files = [];
         $arrayData = [];
@@ -119,12 +157,14 @@ class PhpValidator
                         'line_value' => $stringValue
                     ];
                 }
-                $results[] = [
-                    $path,
-                    !empty($data) ? $arrayData : [],
-                ];
+                if (!empty($data)) {
+                    $results[] = [
+                        'file_path' => $path,
+                        'entries' => $arrayData
+                    ];
+                }
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {
-                $this->getDirContentsReverse($path, $results);
+                $this->getDirContentsTranslated($path, $results);
             }
         }
 
@@ -132,47 +172,23 @@ class PhpValidator
     }
 
     /**
-     * @param array $result
+     * @param array $report
      *
      * @return array
      */
-    private function getResultStringsCount(array $result): array
+    private function getResultStringsCount(array $report): array
     {
         $wholeStringsInFile = 0;
-        $untranslatedStrings = 0;
+        $entries = 0;
 
-        foreach ($result as $item) {
+        foreach ($report as $item) {
             $wholeStringsInFile += count(file($item['file_path'])) + 1;
-            $untranslatedStrings += count($item['untranslated_entries']);
+            $entries += count($item['entries']);
         }
 
         return [
             'total_strings_count' => $wholeStringsInFile,
-            'untranslated_entries_count' => $untranslatedStrings
+            'entries_count' => $entries,
         ];
-    }
-
-    /**
-     * @param array  $result
-     * @param string $folder
-     * @param string $mode
-     *
-     * @return array
-     */
-    private function aggregateResult(array $result, string $folder, string $mode): array
-    {
-        if ($mode === 'reverse') {
-            if (empty($result)) {
-                return $this->getDirContentsReverse($folder);
-            }
-            $data = $this->getDirContentsReverse($folder);
-        } else {
-            if (empty($result)) {
-                return $this->getDirContents($folder);
-            }
-            $data = $this->getDirContents($folder);
-        }
-
-        return array_merge($result, $data);
     }
 }

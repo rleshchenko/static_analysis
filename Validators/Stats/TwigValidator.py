@@ -1,5 +1,10 @@
 from bs4 import BeautifulSoup, NavigableString
+<<<<<<< HEAD
 import re, html.parser as HTMLParser
+=======
+import re, HTMLParser
+from Dto.ResultObject import StatsResultObject
+>>>>>>> Update PHP and stats
 
 
 class TwigValidator:
@@ -17,7 +22,8 @@ class TwigValidator:
             data = theFile.read()
             return data
 
-    def execute(self, filePath, result):
+    def execute(self, filePath):
+        result = StatsResultObject()
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
         linesLen = len(open(filePath).readlines())
@@ -46,9 +52,9 @@ class TwigValidator:
         untranslated_elements = self.__filter_html_elements(untranslated_elements)
         translated_elements = self.__filter_html_elements(translated_elements)
 
-        result.set_total_count(result.get_total_count() + linesLen)
-        result.set_translated_count(result.get_translated_count() + len(translated_elements))
-        result.set_untranslated_count(result.get_untranslated_count() + len(untranslated_elements))
+        result.set_total_count(linesLen)
+        result.set_translated_count(len(translated_elements))
+        result.set_untranslated_count(len(untranslated_elements))
 
         return result
 

@@ -31,10 +31,11 @@ class PhpValidator:
                 response = json.loads(response.text)
             if len(response) == 0:
                 return result_data
-            for parsed_file in response: 
+            items = response['report']
+            for parsed_file in items: 
                 result_object = DetailedResultObject()
                 result_object.set_file_path(parsed_file['file_path'])
-                for untranslated_item in parsed_file['untranslated_entries']:
+                for untranslated_item in parsed_file['entries']:
                     entryObject = DetailedResultEntryObject()
                     entryObject.set_line_number(untranslated_item['line_number'])
                     entryObject.set_untranslated_line(untranslated_item['line_value'])

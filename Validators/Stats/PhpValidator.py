@@ -34,6 +34,7 @@ class PhpValidator:
 
                 entryObject.set_total_count(response['total_strings_count'])
                 entryObject.set_untranslated_count(response['untranslated_entries_count'])
+                entryObject.set_translated_count(response['translated_entries_count'])
 
             os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
 
