@@ -19,9 +19,7 @@ class PhpValidator
                 foreach ($folders as $folder) {
                     $result = $this->aggregateResult($result, $folder, $params['mode']);
                 }
-                if ($params['mode'] === static::STATS_MODE) {
-                    $result = $this->getResultStringsCount($result);
-                }
+
             } catch (Throwable $e) {
             } finally {
                 echo json_encode($result);
@@ -29,6 +27,8 @@ class PhpValidator
         }
     }
 
+
+    
     /**
      * @param string $dir
      * @param array  $results
@@ -161,14 +161,18 @@ class PhpValidator
      */
     private function aggregateResult(array $result, string $folder, string $mode): array
     {
+        if ($mode === 'reverse') {
+            if (empty($result)) {
+                return $this->getDirContentsReverse($folder);
+            }
+            $data = $this->getDirContentsReverse($folder);
+        } else {
+            if (empty($result)) {
+                return $this->getDirContents($folder);
+            }
+            $data = $this->getDirContents($folder);
+        }
 
-        if (empty($result)) {
-            return $this->getDirContents($folder);
-        }
-        $untranslatedResults = $this->getDirContents($folder);
-        if ($mode === static::STATS_MODE) {
-            $translatedFields = $this->getDirContentsReverse($folder);
-        }
         return array_merge($result, $data);
     }
 }
