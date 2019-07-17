@@ -1,6 +1,5 @@
-import os, importlib, argparse, glob, sys
-
-
+import os, importlib, argparse, sys
+from typing import AnyStr as String
 class Initialize:
     parser = ''
     scanners = []
@@ -66,7 +65,7 @@ class Initialize:
 
         return list
 
-    def __get_scanner(self, scanner_type):
+    def __get_scanner(self, scanner_type: String):
         scanner_type = scanner_type.capitalize()
         for scaner in self.scanners:
             if scaner.__class__.__name__ == scanner_type:

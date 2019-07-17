@@ -1,4 +1,6 @@
 import os, fnmatch, importlib, glob
+from Dto.ResultObject import StatsResultObject
+from typing import List
 
 class Stats:
     mode = 'stats'
@@ -9,11 +11,11 @@ class Stats:
     def execute(self):
         self.__import_validators()
         self.__import_renderers()
-        write_report = raw_input('Create report file? (Yes => 1 / No => 0):')
+        write_report = input('Create report file? (Yes => 1 / No => 0):')
         try:
             results = self.validate()
         except KeyboardInterrupt:
-            print '\nProcess interrupted from the keyboard'
+            print('\nProcess interrupted from the keyboard')
             return
 
         if write_report == '1':
@@ -21,8 +23,8 @@ class Stats:
 
         return self._renderers['Console'].execute(results, self.mode)
 
-    def validate(self):
-        result = self.__get_dto()
+    def validate(self) -> StatsResultObject:
+        result = StatsResultObject()
         for validator in self._validators:
             validator.init()
             if hasattr(validator, 'folder') and validator.folder is not '':
@@ -40,7 +42,7 @@ class Stats:
         validator_type = self.mode.capitalize()
         validator_name = validator_type.capitalize()  # TODO check if os.path.join can work with multiple dirs
         os.chdir(validator_name)
-        module_list = [f for f in glob.glob( "*.py")]
+        module_list = [f for f in glob.glob("*.py")]
         for moduleItem in module_list:
             if moduleItem.find("init") is not -1:
                 continue
@@ -50,7 +52,7 @@ class Stats:
             self._validators.append(class_name())
         os.chdir('../../')
 
-    def _get_files_for_validator(self, folder_name, file_extensions):
+    def _get_files_for_validator(self, folder_name: str, file_extensions) -> List:
         files = []
 
         if isinstance(file_extensions, str):
@@ -83,7 +85,6 @@ class Stats:
 
         return files
 
-
     def __import_renderers(self):
         os.chdir('Output')
         module_list = [f for f in glob.glob("*.py")]
@@ -94,15 +95,6 @@ class Stats:
             renderer = getattr(module, moduleItem[0:-3])
             self._renderers[moduleItem[0:-3]] = renderer()
         os.chdir('../')
-
-    def __get_dto(self):
-        os.chdir('Dto')
-        dto_type = self.mode.capitalize()
-        module = importlib.import_module('ResultObject')
-        class_name = getattr(module, dto_type + 'ResultObject')
-        os.chdir('../')
-
-        return class_name()
 
     def __get_files_for_validator(self, folder_name, file_extensions):
         """Returns file list depends on given extension """

@@ -1,5 +1,6 @@
 import os, fnmatch, importlib, glob
 import sys
+from typing import List
 from Dto.ResultObject import DetailedResultObject
 
 class Detailed:
@@ -11,11 +12,11 @@ class Detailed:
     def execute(self):
         self.__import_validators()
         self.__import_renderers()
-        write_report = raw_input('Create report file? (Yes => 1 / No => 0):')
+        write_report = input('Create report file? (Yes => 1 / No => 0):')
         try:
             results = self.validate()
         except KeyboardInterrupt:
-            print '\nProcess interrupted from the keyboard'
+            print ('\nProcess interrupted from the keyboard')
             return
         
         if write_report == '1':
@@ -23,7 +24,7 @@ class Detailed:
 
         return self._renderers['Console'].execute(results, self.mode)
 
-    def validate(self):
+    def validate(self) -> List:
         results = []
         for validator in self._validators:
             validator.init()
@@ -31,14 +32,13 @@ class Detailed:
                 files = self.__get_files_for_validator(validator.folder, validator.EXTENSIONS)
                 for filePath in files:
                     result = DetailedResultObject()
-                    result = validator.execute(filePath, self.mode, result)
+                    result = validator.execute(filePath, result)
                     if len(result.untranslated_entires) is not 0:
                         result.set_file_path(filePath)
                         results.append(result)
-                        del result
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
-                results += validator.execute(self.mode)
+                results += validator.execute(self.mode, result)
 
         return results
 
@@ -58,16 +58,7 @@ class Detailed:
             self._validators.append(class_name())
         os.chdir('../../')
 
-    def __get_dto(self):
-        os.chdir('Dto')
-        dto_type = self.mode.capitalize()
-        module = importlib.import_module('ResultObject')
-        class_name = getattr(module, dto_type + 'ResultObject')
-        os.chdir('../')
-
-        return class_name
-
-    def __get_files_for_validator(self, folder_name, file_extensions):
+    def __get_files_for_validator(self, folder_name: str, file_extensions) -> List:
         """Returns file list depends on given extension """
         files = []
 

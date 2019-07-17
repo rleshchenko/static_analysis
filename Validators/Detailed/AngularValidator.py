@@ -1,7 +1,6 @@
-from bs4 import BeautifulSoup, NavigableString, sys
-import HTMLParser
-import re
-
+from bs4 import BeautifulSoup, NavigableString
+import html.parser as HTMLParser
+from typing import AnyStr as String, List
 
 class AngularValidator:
     """Validator for the angular 1.5 html templates."""
@@ -10,15 +9,15 @@ class AngularValidator:
     folder = ''
 
     def init(self):
-        self.folder = raw_input('Please insert angular templates folder:')
+        self.folder = input('Please insert angular templates folder:')
 
-    def getFileContent(self, filePath):
+    def getFileContent(self, filePath: String) -> String:
         """Method retrieves file contents by give filePath"""
         with open(filePath, 'r') as theFile:
             data = theFile.read()
             return data
 
-    def execute(self, filePath, mode, result):
+    def execute(self, filePath: String, result):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
 
@@ -34,12 +33,13 @@ class AngularValidator:
 
         )
 
-        filteredResults = self.filterHtmlElements(searchResults, mode)
+        filteredResults = self.filterHtmlElements(searchResults)
+
         if len(filteredResults) != 0:
             result.add_translate_entry(self.numerateResults(filePath, filteredResults))
         return result
 
-    def filterHtmlElements(self, htmlElements, mode):
+    def filterHtmlElements(self, htmlElements: List) -> List:
         filteredResults = []
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
@@ -54,7 +54,7 @@ class AngularValidator:
 
         return filteredResults
 
-    def checkParentObject(self, element):
+    def checkParentObject(self, element) -> bool:
         parentElement = element.parent
         childCount = 0
         for child in list(parentElement.children):
@@ -71,10 +71,8 @@ class AngularValidator:
 
         return False
 
-    def numerateResults(self, filePath, searchResults):
+    def numerateResults(self, filePath: String, searchResults: List) -> List:
         result = []
-        reload(sys)
-        sys.setdefaultencoding('utf8')
         fileLinesNumber = sum(1 for line in open(filePath, 'r'))
         for searchResult in searchResults:
             searchResult = HTMLParser.HTMLParser().unescape(str(searchResult))
@@ -91,5 +89,5 @@ class AngularValidator:
 
         return result
 
-    def getFolder(self):
+    def getFolder(self) -> String:
         return self.folder

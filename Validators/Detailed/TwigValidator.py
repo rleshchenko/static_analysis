@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup, NavigableString
-import re, HTMLParser
+import re, html.parser as HTMLParser
 
 
 class TwigValidator:
@@ -9,15 +9,15 @@ class TwigValidator:
     folder = ''
 
     def init(self):
-        self.folder = raw_input('Please insert twig templates folder:')
+        self.folder = input('Please insert twig templates folder:')
 
     def getFileContent(self, filePath):
         """Method retrieves file contents by give filePath"""
         with open(filePath, 'r') as theFile:
-            data = theFile.read().decode('utf-8')
+            data = theFile.read()
             return data
 
-    def execute(self, filePath, mode, result):
+    def execute(self, filePath, result):
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
         soup = BeautifulSoup(fileContent, 'html.parser')

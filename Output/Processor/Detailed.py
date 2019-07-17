@@ -9,8 +9,7 @@ class Detailed:
             for translate_entry in untrunslated_entries:
                 try:
                     line = '\t' + str(
-                        translate_entry.get_line_number()) + '\t' + translate_entry.get_untranslated_line().encode(
-                        'unicode-escape') + '\n'
+                        translate_entry.get_line_number()) + '\t' + translate_entry.get_untranslated_line() + '\n'
                     preparedResult.append(line)
                     html_elements_count += 1
                 except UnicodeDecodeError:

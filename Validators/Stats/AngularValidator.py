@@ -8,7 +8,7 @@ class AngularValidator:
     folder = ''
 
     def init(self):
-        self.folder = raw_input('Please insert angular templates folder:')
+        self.folder = input('Please insert angular templates folder:')
 
     def getFileContent(self, filePath):
         """Method retrieves file contents by give filePath"""

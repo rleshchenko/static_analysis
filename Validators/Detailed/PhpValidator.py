@@ -20,7 +20,7 @@ class PhpValidator:
         )
 
     def init(self):
-        self.folders = raw_input('Please insert php folders, comma separated:')
+        self.folders = input('Please insert php folders, comma separated:')
 
     def execute(self, mode):
         result_data = []
@@ -42,15 +42,9 @@ class PhpValidator:
 
                 result_data.append(result_object)
 
+        os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
+
         return result_data
-
-
-    def __del__(self):
-        import os, signal
-        try:
-            os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
-        except OSError:
-            return
 
     def __build_url(self, mode):
         if len(mode) == 0:

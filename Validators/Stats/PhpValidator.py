@@ -21,7 +21,7 @@ class PhpValidator:
         )
 
     def init(self):
-        self.folders = raw_input('Please insert php folders, comma separated:')
+        self.folders = input('Please insert php folders, comma separated:')
 
     def execute(self, mode=''):
         if len(self.folders) is not 0 and len(self.url) is not 0:
@@ -35,14 +35,9 @@ class PhpValidator:
                 entryObject.set_total_count(response['total_strings_count'])
                 entryObject.set_untranslated_count(response['untranslated_entries_count'])
 
-            return entryObject
-
-    def __del__(self):
-        import os, signal
-        try:
             os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
-        except OSError:
-            return
+
+            return entryObject
 
     def __build_url(self, mode):
         if len(mode) == 0:
