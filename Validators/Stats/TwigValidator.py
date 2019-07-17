@@ -1,10 +1,6 @@
 from bs4 import BeautifulSoup, NavigableString
-<<<<<<< HEAD
 import re, html.parser as HTMLParser
-=======
-import re, HTMLParser
 from Dto.ResultObject import StatsResultObject
->>>>>>> Update PHP and stats
 
 
 class TwigValidator:

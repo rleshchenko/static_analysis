@@ -30,7 +30,7 @@ class Stats:
             if hasattr(validator, 'folder') and validator.folder is not '':
                 files = self.__get_files_for_validator(validator.folder, validator.EXTENSIONS)
                 for filePath in files:
-                    validatorResult = validator.execute(filePath, result)
+                    validatorResult = validator.execute(filePath)
                     result = self.merge_total_result(result, validatorResult)
             if hasattr(validator, 'url') and len(validator.url) is not 0 \
                     and hasattr(validator, 'folders') and len(validator.folders) is not 0:
