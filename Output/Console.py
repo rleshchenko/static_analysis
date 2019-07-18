@@ -1,5 +1,6 @@
 import os, importlib
 
+
 class Console:
 
     def execute(self, results, mode):

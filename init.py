@@ -71,9 +71,8 @@ class Initialize:
             if scaner.__class__.__name__ == scanner_type:
                 return scaner
 
-        print 'There is no such a scanner. Proceeding with flex'
+        print('There is no such a scanner. Proceeding with flex')
         return self.scanners[1]
-
 
 
 Initialize().execute()

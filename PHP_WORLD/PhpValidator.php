@@ -34,9 +34,9 @@ class PhpValidator
         $translatedReport = $this->getTranslatedReport($folders);
         $untranslatedReport = $this->getUntranslatedReport($folders);
         return [
-            'total_strings_count'        => $untranslatedReport['stats']['total_strings_count'],
+            'total_strings_count' => $untranslatedReport['stats']['total_strings_count'],
             'untranslated_entries_count' => $untranslatedReport['stats']['entries_count'],
-            'translated_entries_count'   => $translatedReport['stats']['entries_count']
+            'translated_entries_count' => $translatedReport['stats']['entries_count'],
         ];
 
     }
@@ -50,7 +50,7 @@ class PhpValidator
         $stats = $this->getResultStringsCount($results);
         return [
             'stats' => $stats,
-            'report' => $results
+            'report' => $results,
         ];
     }
 
@@ -63,7 +63,7 @@ class PhpValidator
         $stats = $this->getResultStringsCount($results);
         return [
             'stats' => $stats,
-            'report' => $results
+            'report' => $results,
         ];
     }
 
@@ -104,13 +104,13 @@ class PhpValidator
                 foreach ($data as $stringNumber => $stringValue) {
                     $arrayData[] = [
                         'line_number' => $stringNumber,
-                        'line_value'  => $stringValue
+                        'line_value' => $stringValue,
                     ];
                 }
                 if (!empty($data)) {
                     $results[] = [
                         'file_path' => $path,
-                        'entries' => $arrayData
+                        'entries' => $arrayData,
                     ];
                 }
 
@@ -154,13 +154,13 @@ class PhpValidator
                 foreach ($data as $stringNumber => $stringValue) {
                     $arrayData[] = [
                         'line_number' => $stringNumber,
-                        'line_value' => $stringValue
+                        'line_value' => $stringValue,
                     ];
                 }
                 if (!empty($data)) {
                     $results[] = [
                         'file_path' => $path,
-                        'entries' => $arrayData
+                        'entries' => $arrayData,
                     ];
                 }
             } else if ($value !== '.' && $value !== '..' && $value !== '.DS_Store') {

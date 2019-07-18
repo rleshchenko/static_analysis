@@ -1,5 +1,6 @@
 from interface import Interface
 
+
 class DetailedResultEntryObjectInterface(Interface):
     def set_line_number(self, num: int):
         pass

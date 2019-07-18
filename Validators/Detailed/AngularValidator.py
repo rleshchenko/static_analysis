@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup, NavigableString
 import html.parser as HTMLParser
 from typing import AnyStr as String, List
 
+
 class AngularValidator:
     """Validator for the angular 1.5 html templates."""
 
@@ -43,7 +44,7 @@ class AngularValidator:
         filteredResults = []
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
-                    continue
+                continue
             else:
                 if len(element.find(text=True, recursive=False).strip()) is 0:
                     continue

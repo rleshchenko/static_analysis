@@ -2,6 +2,7 @@ import os, fnmatch, importlib, glob
 from Dto.ResultObject import StatsResultObject
 from typing import List
 
+
 class Stats:
     mode = 'stats'
     """Main entrypoint class for the static code analysis"""

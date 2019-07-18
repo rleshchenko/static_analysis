@@ -3,6 +3,7 @@ import sys
 from typing import List
 from Dto.ResultObject import DetailedResultObject
 
+
 class Detailed:
     mode = 'detailed'
     """Main entrypoint class for the static code analysis"""
@@ -16,9 +17,9 @@ class Detailed:
         try:
             results = self.validate()
         except KeyboardInterrupt:
-            print ('\nProcess interrupted from the keyboard')
+            print('\nProcess interrupted from the keyboard')
             return
-        
+
         if write_report == '1':
             return self._renderers['ReportFile'].execute(results, self.mode)
 
@@ -48,7 +49,7 @@ class Detailed:
         validator_type = self.mode.capitalize()
         validator_name = validator_type.capitalize()  # TODO check if os.path.join can work with multiple dirs
         os.chdir(validator_name)
-        module_list = [f for f in glob.glob( "*.py")]
+        module_list = [f for f in glob.glob("*.py")]
         for moduleItem in module_list:
             if moduleItem.find("init") is not -1:
                 continue
@@ -94,7 +95,7 @@ class Detailed:
 
     def __import_renderers(self):
         os.chdir('Output')
-        module_list = [f for f in glob.glob( "*.py")]
+        module_list = [f for f in glob.glob("*.py")]
         for moduleItem in module_list:
             if moduleItem.find("init") is not -1:
                 continue

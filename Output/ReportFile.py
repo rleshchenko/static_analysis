@@ -1,5 +1,6 @@
 import os, importlib
 
+
 class ReportFile:
     processor = ''
     """Renders result in the console"""

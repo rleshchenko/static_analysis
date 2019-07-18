@@ -25,14 +25,14 @@ class TwigValidator:
         linesLen = len(open(filePath).readlines())
         soup = BeautifulSoup(fileContent, 'html.parser')
         untranslated_elements = soup.find_all(
-                lambda tag: len(tag.text) is not 0
-                            and tag.find(text=True, recursive=False) is not NavigableString
-                            and tag.find(text=True, recursive=False) is not '\n'
-                            and tag.find(text=True, recursive=False) is not None
-                            and len(re.findall(r'(\s*translate)', tag.text)) is 0
-                            and tag.text.find('translate') is -1
-                            and tag.name not in ['style', 'script']
-            )
+            lambda tag: len(tag.text) is not 0
+                        and tag.find(text=True, recursive=False) is not NavigableString
+                        and tag.find(text=True, recursive=False) is not '\n'
+                        and tag.find(text=True, recursive=False) is not None
+                        and len(re.findall(r'(\s*translate)', tag.text)) is 0
+                        and tag.text.find('translate') is -1
+                        and tag.name not in ['style', 'script']
+        )
 
         translated_elements = soup.find_all(
             lambda tag: len(tag.text) is not 0
@@ -43,7 +43,6 @@ class TwigValidator:
                         and tag.text.find('translate') is not -1
                         and tag.name not in ['style', 'script']
         )
-
 
         untranslated_elements = self.__filter_html_elements(untranslated_elements)
         translated_elements = self.__filter_html_elements(translated_elements)

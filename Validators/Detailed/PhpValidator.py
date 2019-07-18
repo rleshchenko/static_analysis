@@ -5,6 +5,7 @@ import os
 import signal
 from Dto.ResultObject import DetailedResultObject, DetailedResultEntryObject
 
+
 class PhpValidator:
     """Validator for the angular 1.5 html templates."""
     folders = ''
@@ -32,7 +33,7 @@ class PhpValidator:
             if len(response) == 0:
                 return result_data
             items = response['report']
-            for parsed_file in items: 
+            for parsed_file in items:
                 result_object = DetailedResultObject()
                 result_object.set_file_path(parsed_file['file_path'])
                 for untranslated_item in parsed_file['entries']:
@@ -43,7 +44,7 @@ class PhpValidator:
 
                 result_data.append(result_object)
 
-       ## os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
+        ## os.killpg(os.getpgid(self.process.pid), signal.SIGTERM)
 
         return result_data
 

@@ -1,5 +1,7 @@
 import os, importlib, argparse, sys
 from typing import AnyStr as String
+
+
 class Initialize:
     parser = ''
     scanners = []
@@ -71,7 +73,7 @@ class Initialize:
             if scaner.__class__.__name__ == scanner_type:
                 return scaner
 
-        print ('There is no such a scanner. Proceeding with detailed')
+        print('There is no such a scanner. Proceeding with detailed')
         return self.scanners[1]
 
 
