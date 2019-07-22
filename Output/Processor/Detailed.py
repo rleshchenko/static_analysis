@@ -1,6 +1,9 @@
+from typing import List
+
+
 class Detailed:
 
-    def execute(self, results):
+    def execute(self, results: List) -> List:
         preparedResult = []
         html_elements_count = 0
         for processed_file in results:
@@ -16,4 +19,5 @@ class Detailed:
                     continue
             preparedResult.append('\n')
         preparedResult.append('\nTotal elements count: ' + str(html_elements_count))
+
         return preparedResult

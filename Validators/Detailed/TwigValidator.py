@@ -28,6 +28,7 @@ class TwigValidator:
                         and tag.find(text=True, recursive=False) is not None
                         and len(re.findall(r'(\s*translate)', tag.text)) is 0
                         and tag.text.find('translate') is -1
+                        and 'translate' not in tag.attrs
                         and tag.name not in ['style', 'script']
         )
 

@@ -75,6 +75,8 @@ class AngularValidator:
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
                 continue
+            if 'translate' in element.attrs:
+                continue
             else:
                 if len(element.find(text=True, recursive=False).strip()) is 0:
                     continue
@@ -89,6 +91,9 @@ class AngularValidator:
         filteredResults = []
         for element in htmlElements:
             if element.text.find('{{', 0, -1) != -1 and element.text.find('translate') != -1:
+                filteredResults.append(element)
+                continue
+            if 'translate' in element.attrs:
                 filteredResults.append(element)
                 continue
             else:
