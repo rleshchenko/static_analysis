@@ -2,7 +2,7 @@
 Install bs4 and requests libraries using following command:
 
 ```
-$ pip3 install bs4 && python-interface
+$ pip3 install bs4 python-interface requests
 ```
 
 2. **How to use:**
