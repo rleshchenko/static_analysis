@@ -2,7 +2,7 @@
 Install bs4 and requests libraries using following command:
 
 ```
-$ pip3 install bs4 python-interface requests
+$ pip3 install bs4 python-interface requests typing
 ```
 Also, php7 is a must to use php validator
 
