@@ -16,7 +16,7 @@ class PhpValidator
             $folders = explode(',', $params['folders']);
 
             try {
-                if ($params['mode'] != static::STATS_MODE) {
+                if ($params['mode'] !== static::STATS_MODE) {
                     $result = $this->getUntranslatedReport($folders);
                 } else {
                     $result = $this->prepareStatsReport($folders);

@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup, NavigableString
 import re, html.parser as HTMLParser
+import requests
+import json
 
 
 class TwigValidator:
@@ -69,6 +71,9 @@ class TwigValidator:
             if len(element.text.strip()) is 0:
                 continue
             filtered_results.append(element.text.strip())
+
+        response = requests.get('http://127.0.0.1/index.php/twigvalidator?elements=' + json.dumps(filtered_results))
+        filtered_results = json.loads(response.text)
 
         return filtered_results
 

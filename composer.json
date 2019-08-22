@@ -1,0 +1,20 @@
+{
+    "name": "serhii.bilofastov/translation_static_analysis",
+    "license": "",
+    "authors": [
+        {
+            "name": "Serhii",
+            "email": "serhii.bilofastov@bigcommerce.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.37.1"
+    },
+    "autoload": {
+        "classmap": [
+            "PHP_WORLD/Twig/Node/TranslateNodeClass.php",
+            "PHP_WORLD/Twig/TokenParser/TranslateTokenParserClass.php",
+            "PHP_WORLD/TwigParser.php"
+        ]
+    }
+}
