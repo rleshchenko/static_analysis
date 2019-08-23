@@ -24,16 +24,7 @@ class TwigValidator:
         """Main validator's logic entrypoint."""
         fileContent = self.getFileContent(filePath)
         soup = BeautifulSoup(fileContent, 'html.parser')
-        searchResults = soup.find_all(
-            lambda tag: len(tag.text) is not 0
-                        and tag.find(text=True, recursive=False) is not NavigableString
-                        and tag.find(text=True, recursive=False) is not '\n'
-                        and tag.find(text=True, recursive=False) is not None
-                        and len(re.findall(r'(\s*translate)', tag.text)) is 0
-                        and tag.text.find('translate') is -1
-                        and 'translate' not in tag.attrs
-                        and tag.name not in ['style', 'script']
-        )
+        searchResults = self.search_for_untranslated_elements(soup)
 
         searchResults = self.__filter_html_elements(searchResults)
 
@@ -71,6 +62,11 @@ class TwigValidator:
                 continue
             if len(element.text.strip()) is 0:
                 continue
+            if element.name == 'script':
+                children = BeautifulSoup(list(element.children)[0], 'html.parser')
+                searchResults = self.search_for_untranslated_elements(children)
+                return self.__filter_html_elements(searchResults)
+
             filtered_results.append(element.text.strip())
 
         response = requests.get(self.TWIG_ENDPOINT + json.dumps(filtered_results))
@@ -78,5 +74,14 @@ class TwigValidator:
 
         return filtered_results
 
-    def getFolder(self):
-        return self.folder
+    def search_for_untranslated_elements(self, dom_object) -> list:
+        return dom_object.find_all(
+            lambda tag: len(tag.text) is not 0
+                        and tag.find(text=True, recursive=False) is not NavigableString
+                        and tag.find(text=True, recursive=False) is not '\n'
+                        and tag.find(text=True, recursive=False) is not None
+                        and len(re.findall(r'(\s*translate)', tag.text)) is 0
+                        and tag.text.find('translate') is -1
+                        and 'translate' not in tag.attrs
+                        and tag.name not in ['style']
+        )
