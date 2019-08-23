@@ -55,10 +55,10 @@ class TwigValidator
         }
     }
 
-    public function execute()
+    public function execute(): ?string
     {
         if (!isset($_GET['elements'])) {
-            return '';
+            return null;
         }
 
         $incoming = $_GET['elements'];
@@ -81,7 +81,6 @@ class TwigValidator
         }
 
         return json_encode($incoming);
-
     }
 
     /**
