@@ -9,6 +9,7 @@ class TwigValidator:
 
     EXTENSIONS = ['html', 'twig', 'tpl']
     folder = ''
+    TWIG_ENDPOINT = 'http://127.0.0.1/index.php/twigvalidator?elements='
 
     def init(self):
         self.folder = input('Please insert twig templates folder:')
@@ -72,7 +73,7 @@ class TwigValidator:
                 continue
             filtered_results.append(element.text.strip())
 
-        response = requests.get('http://127.0.0.1/index.php/twigvalidator?elements=' + json.dumps(filtered_results))
+        response = requests.get(self.TWIG_ENDPOINT + json.dumps(filtered_results))
         filtered_results = json.loads(response.text)
 
         return filtered_results

@@ -14,7 +14,7 @@
         "classmap": [
             "PHP_WORLD/Twig/Node/TranslateNodeClass.php",
             "PHP_WORLD/Twig/TokenParser/TranslateTokenParserClass.php",
-            "PHP_WORLD/TwigParser.php"
+            "PHP_WORLD/TwigValidator.php"
         ]
     }
 }
